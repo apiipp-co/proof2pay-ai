@@ -31,7 +31,7 @@ Kasus sintetis `WO-1028` dimulai dari catatan teknisi dan dua foto. Browser prot
 - Tiga flow Langflow 1.12 asli: `analyze_job_completion`, `validate_completion_evidence`, dan `generate_completion_pack`; JSON ekspor, tangkapan layar, dan kode komponen tersedia.
 - Tujuh dari tujuh skenario API Langflow lulus pada kasus sintetis.
 - Endpoint MCP proyek Langflow menampilkan tiga tool. Tiga dari tiga pemeriksaan MCP langsung lulus, termasuk satu panggilan validasi dan gate persetujuan.
-- `.bob/mcp.json` berisi konfigurasi koneksi lokal untuk IBM Bob; Bob Settings menampilkan server proyek berstatus **Connected**. **Panggilan tool melalui Bob belum terverifikasi**. Pengaturan akun yang diperiksa menampilkan masa trial berakhir.
+- `.bob/mcp.json` berisi konfigurasi koneksi lokal untuk IBM Bob; Bob Settings menampilkan server proyek berstatus **Connected**. **Panggilan tool melalui Bob belum terverifikasi**.
 - Video layar 104 detik menunjukkan browser demo dan antarmuka Langflow; tanpa voiceover dan tanpa adegan Bob.
 
 Artefak bukti: [status implementasi](IMPLEMENTATION_STATUS.md), [hasil evaluasi](evaluation/README.md), [ekspor Langflow](langflow/exports/), [laporan uji](langflow/runs/), [video](demo/proof2pay-demo.mp4), [pitch deck](docs/02-pitch-deck.pdf).

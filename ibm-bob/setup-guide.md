@@ -1,6 +1,6 @@
 # IBM Bob local MCP setup
 
-The repository includes a real [Bob project MCP configuration](../.bob/mcp.json) pointing to the prepared local Langflow project. The endpoint was tested with a direct MCP client, and Bob Settings displayed the workspace server as **Connected** in [this screenshot](screenshots/01-mcp-connected.jpeg). A Bob tool call has **not** been captured, so Bob orchestration remains unverified. The account checked on 28 September displayed an expired trial status.
+The repository includes a real [Bob project MCP configuration](../.bob/mcp.json) pointing to the prepared local Langflow project. The endpoint was tested with a direct MCP client, and Bob Settings displayed the workspace server as **Connected** in [this screenshot](screenshots/01-mcp-connected.jpeg). A Bob tool call has **not** been captured, so Bob orchestration remains unverified.
 
 1. Open this entire `proof2pay-ai` folder as the project in IBM Bob.
 2. Start Langflow in a separate terminal with `scripts/start-langflow-local.sh` and leave it running.

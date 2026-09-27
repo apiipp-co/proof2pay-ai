@@ -12,7 +12,7 @@ This is the source of truth for what has actually run. `DONE` means a local arti
 | Langflow `generate_completion_pack` | DONE | Real export and live tests for approval gate and source-linked synthetic pack |
 | Direct Langflow MCP endpoint | DONE | Three tools discovered, validation called, approval gate checked in `langflow/runs/mcp-verification-2026-09-28.json` |
 | Bob MCP connection | DONE | `.bob/mcp.json` points to `127.0.0.1:7862`; Bob Settings showed `proof2pay-langflow-local` as `Connected` in the workspace; see `ibm-bob/screenshots/01-mcp-connected.jpeg` |
-| Bob tool call and explanation | UNVERIFIED | Need genuine Bob call/result screenshot or log; Bob account settings displayed expired trial status during this check |
+| Bob tool call and explanation | UNVERIFIED | Need genuine Bob call/result screenshot or log |
 | AI model inference | NOT IMPLEMENTED | The current Langflow component is deterministic and covers one synthetic job |
 | Live website / hosted backend | NOT DEPLOYED | Browser app and Langflow run locally only |
 | Demo video | DONE | `demo/proof2pay-demo.mp4`; silent screen recording of browser demo and Langflow UI |
