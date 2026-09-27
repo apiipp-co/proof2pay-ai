@@ -1,6 +1,6 @@
 # Naskah submission · PROOF2PAY AI
 
-**Status:** siap sebagai draf pengisian formulir, belum dikirim ke penyelenggara. Pemilik proyek mengonfirmasi bahwa peserta bekerja **sendiri**, tanpa tim. Nama lengkap peserta, URL GitHub, dan bukti persyaratan administrasi harus diisi dari data asli sebelum submit.
+**Status:** siap sebagai draf pengisian formulir, belum dikirim ke penyelenggara. Pemilik proyek mengonfirmasi bahwa peserta bekerja **sendiri**, tanpa tim. Nama lengkap peserta dan bukti persyaratan administrasi harus diisi dari data asli sebelum submit.
 
 | Kolom | Isi |
 |---|---|
@@ -9,7 +9,7 @@
 | Tim | Peserta individu / solo |
 | Tema | Productivity & Smart Business |
 | Tagline | Finish the job. Prove the job. Get paid. |
-| Repository | **[Isi URL GitHub setelah diunggah]** |
+| Repository | [github.com/apiipp-co/proof2pay-ai](https://github.com/apiipp-co/proof2pay-ai) |
 | Video demo | `demo/proof2pay-demo.mp4` (104 detik, tanpa narasi; URL publik bila formulir meminta tautan) |
 | Demo lokal | `python3 -m http.server 8000`, lalu `http://localhost:8000/app/` |
 
@@ -52,8 +52,8 @@ Klaim teknisi tidak otomatis menjadi bukti. Persyaratan kritis yang hilang tetap
 
 ## Sebelum menekan Submit
 
-1. Isi nama lengkap peserta dan URL repository di tabel atas.
-2. Unggah folder ini ke GitHub sesuai [panduan upload](GITHUB_UPLOAD.md); pastikan file tersembunyi `.bob/` ikut masuk.
+1. Isi nama lengkap peserta di tabel atas sesuai pendaftaran.
+2. Buka [repository publik](https://github.com/apiipp-co/proof2pay-ai) dan pastikan tautan dokumen, video, serta ekspor Langflow dapat diakses. Lihat [catatan publikasi](GITHUB_UPLOAD.md).
 3. Bila form meminta URL video, unggah `demo/proof2pay-demo.mp4` ke tempat yang dapat diakses juri, lalu ganti path lokal di tabel.
 4. Periksa syarat formulir resmi, termasuk sertifikat/kehadiran Hackathon Class dan batas waktu. Lampirkan hanya bukti asli.
 5. Jika integrasi Bob merupakan syarat penilaian, jalankan pengujian Bob sungguhan dan tambahkan bukti panggilan tool. Jangan menggunakan laporan MCP langsung sebagai pengganti bukti Bob.
