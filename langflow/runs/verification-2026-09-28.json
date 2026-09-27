@@ -1,0 +1,59 @@
+{
+  "checked_at_utc": "2026-09-27T17:14:38.853412+00:00",
+  "langflow_version": "1.12.0",
+  "server": "isolated local instance",
+  "synthetic": true,
+  "passed": 7,
+  "total": 7,
+  "cases": [
+    {
+      "case": "claim_is_not_proof",
+      "flow": "analyze_job_completion",
+      "pass": true,
+      "billing_state": null,
+      "error": null
+    },
+    {
+      "case": "initial_blockers",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "BLOCKED",
+      "error": null
+    },
+    {
+      "case": "reading_and_ack_still_need_report",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "BLOCKED",
+      "error": null
+    },
+    {
+      "case": "explicit_approval_required",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": null,
+      "error": "Explicit approved=true and approved_by are required"
+    },
+    {
+      "case": "missing_evidence_cannot_be_approved",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": null,
+      "error": "Critical evidence unresolved: REQ-COOLING-TEST, REQ-CUSTOMER-ACK"
+    },
+    {
+      "case": "conflict_requires_review",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "HUMAN_REVIEW",
+      "error": null
+    },
+    {
+      "case": "approved_pack_is_traceable",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": "BILLING_READY_DEMO",
+      "error": null
+    }
+  ]
+}

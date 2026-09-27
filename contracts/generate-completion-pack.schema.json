@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GenerateCompletionPackResult",
+  "type": "object",
+  "required": [
+    "job_id",
+    "generated",
+    "approval_id",
+    "artifacts"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "generated": {
+      "type": "boolean"
+    },
+    "approval_id": {
+      "type": "string"
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "kind"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "uri": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

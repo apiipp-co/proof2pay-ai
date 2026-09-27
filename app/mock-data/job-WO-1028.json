@@ -1,0 +1,65 @@
+{
+  "job": {
+    "job_id": "WO-1028",
+    "vertical": "HVAC",
+    "service_type": "Preventive AC Maintenance",
+    "customer": "PT Demo Nusantara",
+    "status": "REPORTED_COMPLETE",
+    "synthetic": true
+  },
+  "technician_note": "Preventive maintenance completed for AC Unit L2-07. Drain cleaned and filter cleaned. Cooling test performed after service.",
+  "requirements": [
+    {
+      "id": "REQ-BEFORE-AFTER",
+      "description": "Before and after service photos",
+      "critical": true,
+      "source_ref": "SOW-1028#evidence"
+    },
+    {
+      "id": "REQ-COOLING-TEST",
+      "description": "Post-service cooling performance evidence",
+      "critical": true,
+      "source_ref": "SOW-1028#acceptance-test"
+    },
+    {
+      "id": "REQ-CUSTOMER-ACK",
+      "description": "Customer completion acknowledgement",
+      "critical": true,
+      "source_ref": "SOW-1028#acceptance"
+    },
+    {
+      "id": "REQ-SERVICE-REPORT",
+      "description": "Final service report",
+      "critical": true,
+      "source_ref": "WO-1028#closeout"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "type": "photo",
+      "label": "before_photo",
+      "synthetic": true
+    },
+    {
+      "id": "EV-002",
+      "type": "photo",
+      "label": "after_photo",
+      "synthetic": true
+    },
+    {
+      "id": "EV-003",
+      "type": "technician_note",
+      "label": "completion_note",
+      "synthetic": true
+    }
+  ],
+  "expected_initial_state": {
+    "billing_state": "BLOCKED",
+    "expected_blockers": [
+      "REQ-COOLING-TEST",
+      "REQ-CUSTOMER-ACK",
+      "REQ-SERVICE-REPORT"
+    ]
+  }
+}

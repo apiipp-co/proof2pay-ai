@@ -1,0 +1,30 @@
+[
+  {
+    "id": "missing-critical-signoff",
+    "description": "All technical evidence exists but customer acknowledgement is missing.",
+    "expected_state": "BLOCKED",
+    "must_include_status": "MISSING",
+    "must_require_human": true
+  },
+  {
+    "id": "ambiguous-performance-proof",
+    "description": "Technician claims cooling test completed but no measurable reading is linked.",
+    "expected_state": "BLOCKED",
+    "must_include_status": "AMBIGUOUS",
+    "must_require_human": true
+  },
+  {
+    "id": "complete-case",
+    "description": "All critical requirements have supported evidence and user confirms final readiness.",
+    "expected_state": "BILLING_READY_ELIGIBLE",
+    "must_include_status": "READY",
+    "must_require_human": true
+  },
+  {
+    "id": "conflicting-evidence",
+    "description": "Technician note says pass while uploaded reading falls outside configured acceptance range.",
+    "expected_state": "HUMAN_REVIEW",
+    "must_include_status": "HUMAN_REVIEW",
+    "must_require_human": true
+  }
+]

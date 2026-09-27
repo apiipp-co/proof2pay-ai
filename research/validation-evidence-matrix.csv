@@ -1,0 +1,6 @@
+id,claim,source,evidence_type,limitation
+V-01,Field-service workflows require documentation/forms/signatures around completion and billing,ServiceTitan official help,secondary-official,supports category; does not measure Indonesian SME prevalence
+V-02,Completed jobs can pass through review/approval before invoicing,ServiceM8 official help,secondary-official,supports state/handoff concept
+V-03,Formal Indonesian workflows may require BAST/supporting docs before payment,INAPROC/JDIH official sources,secondary-official-local-context,specific contexts only; do not generalize to all SMEs
+H-01,Indonesian B2B field-service SMEs frequently lose time chasing completion evidence,pending primary research,hypothesis,not yet proven
+H-02,Teams will pay for a standalone evidence-intelligence layer,pending primary research,hypothesis,not yet proven

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "proof2pay-langflow-local": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:7862/api/v1/mcp/project/eb71fb5d-1f66-43aa-9009-3cc6487bcda7/streamable",
+      "alwaysAllow": [],
+      "disabled": false
+    }
+  }
+}

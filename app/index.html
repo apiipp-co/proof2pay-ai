@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Proof2Pay AI — demo lokal pemeriksaan bukti pekerjaan sebelum siap ditagihkan.">
+  <title>Proof2Pay — Evidence review</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./main.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Lewati ke konten</a>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">P<span>2</span></span><span>PROOF<span class="brand-light">2PAY</span></span></div>
+    <div class="top-meta"><span class="demo-pill">DEMO · DATA SINTETIS</span><span>Evidence review workspace</span></div>
+  </header>
+  <main id="main" class="shell">
+    <aside class="sidebar" aria-label="Navigasi demo">
+      <p class="eyebrow">WORKSPACE / 01</p>
+      <h2>Job queue</h2>
+      <div class="queue-card" aria-current="page"><span class="queue-dot"></span><span><strong>WO-1028</strong><small>Preventive AC Maintenance</small></span><span class="queue-arrow" aria-hidden="true">↗</span></div>
+      <div class="side-note"><span class="note-line"></span><p>Satu pekerjaan, empat persyaratan, satu keputusan yang bisa ditelusuri.</p></div>
+      <p class="side-foot">Prototype rule-based lokal<br>Tanpa koneksi Bob / Langflow</p>
+    </aside>
+    <div class="content">
+      <div class="breadcrumb">OPERATIONS <span>/</span> JOB DETAIL <span>/</span> WO-1028</div>
+      <section class="hero" aria-labelledby="job-title">
+        <div><p class="eyebrow">REPORTED COMPLETE · HVAC / AC</p><h1 id="job-title">Pekerjaan selesai.<br><em>Apakah bukti sudah cukup?</em></h1><p class="intro">Teknisi sudah menandai pekerjaan selesai. Periksa setiap syarat sebelum menyerahkan paket ke tim billing.</p></div>
+        <div class="state-card"><span class="state-label">BILLING READINESS</span><strong id="state-name">Memuat…</strong><p id="state-explain"></p><div class="state-count"><span id="ready-count">–</span><small>syarat siap</small><span id="blocker-count">–</span><small>belum siap</small></div></div>
+      </section>
+      <section class="job-strip" aria-label="Informasi pekerjaan"><div><span>WORK ORDER</span><strong>WO-1028</strong></div><div><span>PELANGGAN</span><strong>PT Demo Nusantara</strong></div><div><span>LAYANAN</span><strong>Preventive AC Maintenance</strong></div><div><span>UNIT</span><strong>AC L2-07</strong></div></section>
+      <div class="columns">
+        <section class="panel evidence-panel" aria-labelledby="requirements-title"><div class="panel-head"><div><p class="eyebrow">01 / TRACEABILITY</p><h2 id="requirements-title">Syarat & bukti</h2></div><span id="requirement-summary" class="mini-count"></span></div><div id="requirements" class="requirement-list" aria-live="polite"></div></section>
+        <div class="right-col"><section class="panel" aria-labelledby="action-title"><div class="panel-head"><div><p class="eyebrow">02 / NEXT ACTION</p><h2 id="action-title">Lengkapi bukti</h2></div></div><p class="helper">Gunakan kontrol berikut untuk menjalankan skenario sintetis. Bukti ini hanya hidup di browser selama sesi demo.</p><div class="action-stack"><button id="add-reading" type="button" class="action-button"><span><strong>Tambahkan hasil ukur</strong><small>22 °C · pascaservis · EV-004</small></span><span aria-hidden="true">+</span></button><button id="add-ack" type="button" class="action-button"><span><strong>Catat konfirmasi pelanggan</strong><small>Persetujuan contoh · EV-005</small></span><span aria-hidden="true">+</span></button></div><p id="action-feedback" class="feedback" role="status"></p></section>
+        <section class="panel approval-panel" aria-labelledby="approval-title"><div class="panel-head"><div><p class="eyebrow">03 / HUMAN GATE</p><h2 id="approval-title">Persetujuan final</h2></div></div><p class="helper">Laporan final dibuat hanya setelah seluruh bukti kritis lengkap dan seorang manusia menyetujui. Tidak ada pengiriman ke pelanggan atau sistem keuangan.</p><label class="field-label" for="approver">Nama pemberi persetujuan</label><input id="approver" type="text" maxlength="80" autocomplete="name" placeholder="Contoh: Koordinator Demo"><label class="check-row"><input id="confirm" type="checkbox"><span>Saya meninjau bukti dan menyetujui pembuatan paket demo.</span></label><button id="finalize" class="primary-button" type="button">Setujui & buat paket <span aria-hidden="true">↗</span></button><p id="approval-feedback" class="feedback" role="status"></p><button id="download" class="text-button" type="button" hidden>Unduh paket JSON</button></section></div>
+      </div>
+      <footer><span>PROOF2PAY AI · Prototype berbasis aturan</span><span>Data dan persetujuan pada halaman ini hanya simulasi.</span></footer>
+    </div>
+  </main>
+</body>
+</html>

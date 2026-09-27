@@ -1,0 +1,34 @@
+{
+  "artifact_type": "proof2pay_langflow_blueprint",
+  "import_ready": false,
+  "warning": "Specification only. Replace with a real Langflow export from the hackathon environment.",
+  "flows": [
+    {
+      "name": "analyze_job_completion",
+      "priority": "P0",
+      "input_schema": "contracts/analyze-job-completion.schema.json"
+    },
+    {
+      "name": "validate_completion_evidence",
+      "priority": "P0",
+      "input_schema": "contracts/validate-completion-evidence.schema.json"
+    },
+    {
+      "name": "generate_completion_pack",
+      "priority": "P0",
+      "input_schema": "contracts/generate-completion-pack.schema.json"
+    },
+    {
+      "name": "retrieve_job_requirements",
+      "priority": "P1"
+    },
+    {
+      "name": "calculate_billing_readiness",
+      "priority": "P1"
+    },
+    {
+      "name": "resolve_missing_evidence",
+      "priority": "P1"
+    }
+  ]
+}

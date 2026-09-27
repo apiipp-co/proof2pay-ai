@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ValidateCompletionEvidenceResult",
+  "type": "object",
+  "required": [
+    "job_id",
+    "billing_state",
+    "requirements"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string"
+    },
+    "billing_state": {
+      "enum": [
+        "BLOCKED",
+        "REVIEW_REQUIRED",
+        "BILLING_READY_ELIGIBLE"
+      ]
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "requirement_id",
+          "status",
+          "critical",
+          "source_ref",
+          "evidence_ids"
+        ],
+        "properties": {
+          "requirement_id": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "READY",
+              "MISSING",
+              "INCOMPLETE",
+              "AMBIGUOUS",
+              "HUMAN_REVIEW"
+            ]
+          },
+          "critical": {
+            "type": "boolean"
+          },
+          "source_ref": {
+            "type": "string"
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "next_action": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "approval_required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
