@@ -13,6 +13,6 @@ For a hackathon repository, report privately to the project owner rather than op
 ## MVP security posture
 - `.env` excluded from git;
 - least-privilege credentials;
-- synthetic demo data;
+- synthetic browser demo data and a small published NYC Parks work-order snapshot with no private customer artifacts;
 - human approval gates;
 - job/evidence authorization boundary planned for production.

@@ -1,7 +1,8 @@
 """Self-contained Langflow component source embedded into three exported flows.
 
 The export builder replaces ACTION with analyze, validate, or generate.
-Data and rules are deliberately synthetic and local; no invoice is issued.
+The AC walkthrough is synthetic. Three separate public work orders are real
+source records; their missing billing evidence is never fabricated.
 """
 
 import json
@@ -12,6 +13,16 @@ from lfx.schema.message import Message
 
 
 ACTION = "__ACTION__"
+
+# Verbatim selected fields from data/public/nyc-parks-work-orders.json.
+# Kept inside the component so each exported Langflow flow works offline.
+PUBLIC_RECORDS = {
+    "2791739": {"evt_code": "2791739", "evt_desc": "install air conditioners", "evt_type": "JOB", "evt_date": "2026-09-17T00:00:00.000", "evt_completed": "2026-09-21T07:01:00.000", "evt_udfchar13": "Completed", "evt_udfchar06": "CARPENTER"},
+    "2792582": {"evt_code": "2792582", "evt_desc": "Inspect in/outdoor fridge  walk-in-boxes,heating,cooling and  complete logs", "evt_type": "JOB", "evt_date": "2026-09-21T00:00:00.000", "evt_completed": "2026-09-21T11:38:00.000", "evt_udfchar13": "Completed", "evt_udfchar06": "STAENG"},
+    "2792861": {"evt_code": "2792861", "evt_desc": "work on plant repairs with oiler HVAC units belts and filters", "evt_type": "JOB", "evt_date": "2026-09-22T00:00:00.000", "evt_completed": "2026-09-22T11:18:00.000", "evt_udfchar13": "Completed", "evt_udfchar06": "STAENG"},
+}
+PUBLIC_DATASET_URL = "https://data.cityofnewyork.us/d/8sdw-8vja"
+PUBLIC_SNAPSHOT_SHA256 = "87fb2031a46adaf41ca455e9928d27ccf6826705e7bead5f8c46d061ef685633"
 
 REQUIREMENTS = [
     {"id": "REQ-BEFORE-AFTER", "description": "Before and after service photos", "source_ref": "SOW-1028#evidence", "critical": True},
@@ -36,11 +47,59 @@ def parse_request(raw):
             raise ValueError("Input must be a JSON object")
     elif "WO-1028" in text.upper():
         payload = {"job_id": "WO-1028"}
+    elif text in PUBLIC_RECORDS:
+        payload = {"job_id": text}
     else:
-        raise ValueError("Provide a JSON object with job_id=WO-1028 or mention WO-1028")
-    if payload.get("job_id") != "WO-1028":
-        raise ValueError("This demo supports only synthetic job WO-1028")
+        raise ValueError("Provide job_id=WO-1028 or a published NYC Parks ID: " + ", ".join(PUBLIC_RECORDS))
+    if str(payload.get("job_id")) not in ("WO-1028", *PUBLIC_RECORDS):
+        raise ValueError("Unknown job ID; choose WO-1028 or a published NYC Parks ID")
+    payload["job_id"] = str(payload["job_id"])
     return payload
+
+
+def public_result(payload):
+    """Only report fields actually published; never accept supplied mock artifacts."""
+    if any(key in payload for key in ("evidence", "additional_evidence", "technician_note")):
+        raise ValueError("Public record mode accepts only the official snapshot; external evidence is not verified in this prototype")
+    record = PUBLIC_RECORDS[payload["job_id"]]
+    source = "https://data.cityofnewyork.us/resource/8sdw-8vja.json?%24where=evt_code%3D" + record["evt_code"]
+    common = {
+        "job_id": record["evt_code"],
+        "synthetic": False,
+        "data_origin": "NYC_PARKS_PUBLIC_WORK_ORDER",
+        "source_url": source,
+        "source_dataset_url": PUBLIC_DATASET_URL,
+        "snapshot_sha256": PUBLIC_SNAPSHOT_SHA256,
+    }
+    if ACTION == "analyze":
+        return {
+            **common,
+            "record": record,
+            "claims": [{"text": record["evt_desc"], "source_field": "evt_desc", "status": "WORK_ORDER_DESCRIPTION_ONLY"}],
+            "method": "source_field_extraction",
+            "caution": "The published description and Completed status do not prove each task was performed or accepted by a customer.",
+        }
+    if ACTION == "validate":
+        checks = [
+            {"id": "PUBLIC-WORK-ORDER", "status": "OBSERVED", "source_field": "evt_code", "detail": "Official record ID is present"},
+            {"id": "PUBLIC-DESCRIPTION", "status": "OBSERVED", "source_field": "evt_desc", "detail": "Work order description is present; it is not a completion report"},
+            {"id": "PUBLIC-COMPLETION-STATUS", "status": "OBSERVED", "source_field": "evt_udfchar13,evt_completed", "detail": "Published record says Completed and contains a completion timestamp"},
+            {"id": "BILLING-TERMS", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No contract or billing terms in this selected public record"},
+            {"id": "CUSTOMER-ACCEPTANCE", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No customer acknowledgement in this selected public record"},
+            {"id": "COMPLETION-ARTIFACTS", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No inspection log, photos, or signed service report in this selected public record"},
+        ]
+        return {
+            **common,
+            "record": record,
+            "billing_state": "INSUFFICIENT_EVIDENCE",
+            "checks": checks,
+            "blockers": [item["id"] for item in checks if item["status"] == "NOT_AVAILABLE"],
+            "next_action": "Obtain the actual contract, completion artifacts, and customer acceptance from an authorized owner before making a billing decision.",
+            "caution": "These are prototype evidence gaps, not verified contractual requirements for this NYC Parks job.",
+        }
+    if ACTION == "generate":
+        return {**common, "billing_state": "INSUFFICIENT_EVIDENCE", "error": "Completion pack refused: public work-order metadata alone cannot verify billing terms or customer acceptance"}
+    raise ValueError("Unknown flow action")
 
 
 def get_evidence(payload):
@@ -94,16 +153,18 @@ def assess(evidence):
 
 class Proof2PayComponent(Component):
     display_name = "Proof2Pay Evidence Tool"
-    description = "Assess synthetic WO-1028 evidence with source-linked, deterministic rules."
+    description = "Assess synthetic WO-1028 or source-linked public NYC Parks records without inventing evidence."
     icon = "ShieldCheck"
     name = "Proof2PayComponent"
 
-    inputs = [MessageTextInput(name="input_value", display_name="Job request JSON", info="JSON with job_id, optional evidence, approval; no live customer data", tool_mode=True)]
+    inputs = [MessageTextInput(name="input_value", display_name="Job request JSON", info="JSON with job_id. WO-1028 is synthetic; 2791739, 2792582, and 2792861 are public records.", tool_mode=True)]
     outputs = [Output(display_name="Structured result", name="result", method="build_output")]
 
     def build_output(self) -> Message:
         try:
             payload = parse_request(self.input_value)
+            if payload["job_id"] in PUBLIC_RECORDS:
+                return Message(text=json.dumps(public_result(payload), ensure_ascii=False, separators=(",", ":")))
             evidence = get_evidence(payload)
             if ACTION == "analyze":
                 note = str(payload.get("technician_note", DEFAULT_NOTE))
@@ -130,5 +191,5 @@ class Proof2PayComponent(Component):
             else:
                 raise ValueError("Unknown flow action")
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
-            result = {"error": str(exc), "synthetic": True, "action": ACTION}
+            result = {"error": str(exc), "synthetic": False if "payload" in locals() and payload.get("job_id") in PUBLIC_RECORDS else True, "action": ACTION}
         return Message(text=json.dumps(result, ensure_ascii=False, separators=(",", ":")))

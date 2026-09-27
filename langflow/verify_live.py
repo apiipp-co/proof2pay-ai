@@ -1,4 +1,4 @@
-"""Run seven real Langflow API checks against the exported Proof2Pay flows.
+"""Run synthetic and public-record checks against the exported Langflow flows.
 
 Requires a local Langflow instance with these flow IDs imported. Saves only
 sanitized results; no session cookies, tokens, or personal data are written.
@@ -54,6 +54,10 @@ def main():
         ("missing_evidence_cannot_be_approved", "generate_completion_pack", {"job_id": "WO-1028", "approved": True, "approved_by": "Koordinator Demo"}, lambda r: "Critical evidence unresolved" in r.get("error", "")),
         ("conflict_requires_review", "validate_completion_evidence", {"job_id": "WO-1028", "additional_evidence": [{**reading, "conflict": True}, ack]}, lambda r: r["billing_state"] == "HUMAN_REVIEW"),
         ("approved_pack_is_traceable", "generate_completion_pack", {**complete, "approved": True, "approved_by": "Koordinator Demo"}, lambda r: r["billing_state"] == "BILLING_READY_DEMO" and len(r["requirements"]) == 4 and all(x["source_ref"] and x["evidence_ids"] for x in r["requirements"])),
+        ("public_record_is_source_linked", "analyze_job_completion", {"job_id": "2792861"}, lambda r: r["synthetic"] is False and r["record"]["evt_code"] == "2792861" and r["record"]["evt_desc"] == "work on plant repairs with oiler HVAC units belts and filters" and r["claims"][0]["status"] == "WORK_ORDER_DESCRIPTION_ONLY"),
+        ("public_completed_not_billing_ready", "validate_completion_evidence", {"job_id": "2791739"}, lambda r: r["billing_state"] == "INSUFFICIENT_EVIDENCE" and r["record"]["evt_udfchar13"] == "Completed" and set(r["blockers"]) == {"BILLING-TERMS", "CUSTOMER-ACCEPTANCE", "COMPLETION-ARTIFACTS"}),
+        ("public_pack_refused_even_with_approval", "generate_completion_pack", {"job_id": "2792582", "approved": True, "approved_by": "Demo"}, lambda r: r["synthetic"] is False and r["billing_state"] == "INSUFFICIENT_EVIDENCE" and "refused" in r.get("error", "")),
+        ("public_injected_evidence_refused", "validate_completion_evidence", {"job_id": "2792861", "additional_evidence": [{"id": "EV-FAKE", "label": "customer_ack"}]}, lambda r: r["synthetic"] is False and "not verified" in r.get("error", "")),
     ]
     results = []
     for label, name, payload, check in cases:
@@ -61,7 +65,7 @@ def main():
         passed = bool(check(output))
         results.append({"case": label, "flow": name, "pass": passed, "billing_state": output.get("billing_state"), "error": output.get("error")})
         print(f"{'PASS' if passed else 'FAIL'} {label}")
-    report = {"checked_at_utc": datetime.now(timezone.utc).isoformat(), "langflow_version": "1.12.0", "server": "isolated local instance", "synthetic": True, "passed": sum(row["pass"] for row in results), "total": len(results), "cases": results}
+    report = {"checked_at_utc": datetime.now(timezone.utc).isoformat(), "langflow_version": "1.12.0", "server": "isolated local instance", "datasets": ["synthetic WO-1028", "three selected NYC Parks public records"], "passed": sum(row["pass"] for row in results), "total": len(results), "cases": results}
     target = ROOT / "runs" / "verification-2026-09-28.json"
     target.parent.mkdir(exist_ok=True)
     target.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")

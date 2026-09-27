@@ -48,10 +48,12 @@ def main():
     expected = sorted(["analyze_job_completion", "validate_completion_evidence", "generate_completion_pack"])
     blocked = tool_result("validate_completion_evidence", {"job_id": "WO-1028"}, 3)
     no_approval = tool_result("generate_completion_pack", {"job_id": "WO-1028"}, 4)
+    public = tool_result("validate_completion_evidence", {"job_id": "2792861"}, 5)
     checks = {
         "three_named_tools": names == expected,
         "validation_call_blocked": blocked.get("billing_state") == "BLOCKED" and len(blocked.get("blockers", [])) == 3,
         "generation_requires_approval": "approved=true" in no_approval.get("error", ""),
+        "real_public_work_order_stays_blocked": public.get("synthetic") is False and public.get("record", {}).get("evt_code") == "2792861" and public.get("billing_state") == "INSUFFICIENT_EVIDENCE",
     }
     report = {
         "checked_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -59,6 +61,7 @@ def main():
         "protocol_version": initialized.get("protocolVersion"),
         "tool_names": names,
         "synthetic_job": "WO-1028",
+        "public_job": "2792861",
         "checks": checks,
         "passed": sum(checks.values()),
         "total": len(checks),

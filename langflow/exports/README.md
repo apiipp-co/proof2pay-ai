@@ -8,4 +8,4 @@ These are genuine JSON exports downloaded from the local Langflow 1.12 project o
 | `validate_completion_evidence.json` | Returns requirement status, source references, blockers, and next actions |
 | `generate_completion_pack.json` | Requires complete critical evidence and explicit approver identity |
 
-`local-project-id.txt` identifies the prepared Mac's project. On another Langflow installation, importing may assign a new project ID. Update `.bob/mcp.json` accordingly. The project data is synthetic and the custom component source is embedded in each export.
+`local-project-id.txt` identifies the prepared Mac's project. On another Langflow installation, importing may assign a new project ID. Update `.bob/mcp.json` accordingly. Each export embeds the component code and a fixed [three-record public snapshot](../../data/README.md), alongside the separate synthetic `WO-1028` case. The published source fields are genuine; no customer acceptance or billing proof is supplied.

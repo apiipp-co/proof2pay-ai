@@ -1,10 +1,13 @@
 {
-  "checked_at_utc": "2026-09-27T17:30:37.652178+00:00",
+  "checked_at_utc": "2026-09-27T17:47:01.602713+00:00",
   "langflow_version": "1.12.0",
   "server": "isolated local instance",
-  "synthetic": true,
-  "passed": 7,
-  "total": 7,
+  "datasets": [
+    "synthetic WO-1028",
+    "three selected NYC Parks public records"
+  ],
+  "passed": 11,
+  "total": 11,
   "cases": [
     {
       "case": "claim_is_not_proof",
@@ -54,6 +57,34 @@
       "pass": true,
       "billing_state": "BILLING_READY_DEMO",
       "error": null
+    },
+    {
+      "case": "public_record_is_source_linked",
+      "flow": "analyze_job_completion",
+      "pass": true,
+      "billing_state": null,
+      "error": null
+    },
+    {
+      "case": "public_completed_not_billing_ready",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "INSUFFICIENT_EVIDENCE",
+      "error": null
+    },
+    {
+      "case": "public_pack_refused_even_with_approval",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": "INSUFFICIENT_EVIDENCE",
+      "error": "Completion pack refused: public work-order metadata alone cannot verify billing terms or customer acceptance"
+    },
+    {
+      "case": "public_injected_evidence_refused",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": null,
+      "error": "Public record mode accepts only the official snapshot; external evidence is not verified in this prototype"
     }
   ]
 }

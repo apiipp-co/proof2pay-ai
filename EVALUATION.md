@@ -1,6 +1,6 @@
 # Evaluation Plan
 
-PROOF2PAY should not be judged only on one hand-picked demo. The MVP uses a small labelled synthetic test set so core behavior can be reproduced.
+PROOF2PAY should not be judged only on one hand-picked demo. The MVP uses a small labelled synthetic test set and three genuine published NYC Parks work-order records. The public records test source traceability and whether the system correctly withholds billing readiness when supporting artifacts are unavailable; they do not measure customer outcomes.
 
 ## What we evaluate
 

@@ -25,12 +25,14 @@ Teknisi dapat menyatakan pekerjaan selesai, sementara admin operasional dan keua
 
 Kasus sintetis `WO-1028` dimulai dari catatan teknisi dan dua foto. Browser prototype dan flow Langflow memeriksa empat persyaratan terhadap bukti. Catatan “cooling test performed” diperlakukan sebagai klaim, sehingga hasil ukur pendinginan tetap `AMBIGUOUS`. Pengakuan pelanggan dan laporan akhir juga belum ada; status awal `BLOCKED`. Setelah hasil ukur dan pengakuan sintetis ditambahkan, laporan tetap menjadi penghambat. Pengguna memberi persetujuan eksplisit dan nama pemberi persetujuan sebelum paket demo dihasilkan. Bukti yang bertentangan menghasilkan `HUMAN_REVIEW`.
 
+Selain simulasi, flow Langflow menerima tiga ID work order **asli dari NYC Parks AMPS**: `2791739` (pemasangan AC), `2792582` (inspeksi pendingin/pemanas), dan `2792861` (perbaikan unit HVAC). Field sumber, waktu pengambilan, query API, serta checksum ada di [data publik](data/README.md). Misalnya, input `{"job_id":"2792861"}` mengembalikan deskripsi dan status `Completed` yang diterbitkan portal resmi. Validator tetap menghasilkan `INSUFFICIENT_EVIDENCE`, sebab catatan publik yang dipilih tidak menyediakan kontrak, dokumen penyelesaian, atau persetujuan pelanggan. Flow menolak pembuatan paket penagihan dari metadata tersebut.
+
 ## Implementasi yang dapat dibuktikan
 
 - Browser prototype lokal dengan empat tes Node yang lulus.
 - Tiga flow Langflow 1.12 asli: `analyze_job_completion`, `validate_completion_evidence`, dan `generate_completion_pack`; JSON ekspor, tangkapan layar, dan kode komponen tersedia.
-- Tujuh dari tujuh skenario API Langflow lulus pada kasus sintetis.
-- Endpoint MCP proyek Langflow menampilkan tiga tool. Tiga dari tiga pemeriksaan MCP langsung lulus, termasuk satu panggilan validasi dan gate persetujuan.
+- Sebelas dari sebelas skenario API Langflow lulus: tujuh pada kasus sintetis, empat pada data publik asli dan pembatasan klaimnya.
+- Endpoint MCP proyek Langflow menampilkan tiga tool. Empat dari empat pemeriksaan MCP langsung lulus, termasuk validasi work order publik.
 - `.bob/mcp.json` berisi konfigurasi koneksi lokal untuk IBM Bob; Bob Settings menampilkan server proyek berstatus **Connected**. **Panggilan tool melalui Bob belum terverifikasi**.
 - Video layar 104 detik menunjukkan browser demo dan antarmuka Langflow; tanpa voiceover dan tanpa adegan Bob.
 
@@ -38,7 +40,7 @@ Artefak bukti: [status implementasi](IMPLEMENTATION_STATUS.md), [hasil evaluasi]
 
 ## Peran teknologi dan batas saat ini
 
-Langflow menjalankan tiga workflow berbasis komponen aturan deterministik untuk satu work order sintetis. MCP menyediakan permukaan tool yang bisa ditemukan dan dipanggil klien. IBM Bob telah terhubung sebagai klien MCP pada workspace, tetapi pemilihan dan pemanggilan tool melalui chat Bob belum terbukti. Versi saat ini tidak melakukan inferensi model AI, membaca data pelanggan nyata, mengirim pesan, atau membuat invoice. Status `BILLING_READY_DEMO` adalah hasil simulasi, bukan otorisasi penagihan.
+Langflow menjalankan tiga workflow berbasis komponen aturan deterministik untuk satu work order sintetis dan tiga catatan publik asli. MCP menyediakan permukaan tool yang bisa ditemukan dan dipanggil klien. IBM Bob telah terhubung sebagai klien MCP pada workspace, tetapi pemilihan dan pemanggilan tool melalui chat Bob belum terbukti. Versi saat ini tidak melakukan inferensi model AI, membaca data pelanggan privat, mengirim pesan, atau membuat invoice. Status `BILLING_READY_DEMO` hanya berlaku untuk simulasi, bukan otorisasi penagihan. Catatan NYC Parks bukan pilot pelanggan Indonesia dan tidak membuktikan dampak bisnis.
 
 ## Diferensiasi dan model bisnis
 
@@ -46,7 +48,7 @@ Fokus produk ialah celah antara “pekerjaan dilaporkan selesai” dan “bukti 
 
 ## Keamanan dan Responsible AI
 
-Klaim teknisi tidak otomatis menjadi bukti. Persyaratan kritis yang hilang tetap memblokir paket; konflik meminta tinjauan manusia. Pembuatan paket membutuhkan persetujuan eksplisit dan identitas pemberi persetujuan. Sistem tidak mengesahkan tanda tangan, mengotorisasi invoice, mengirim komunikasi eksternal, atau memindahkan uang. Data demo sepenuhnya fiktif. Lihat [ResponsibleAI.md](ResponsibleAI.md).
+Klaim teknisi tidak otomatis menjadi bukti. Persyaratan kritis yang hilang tetap memblokir paket; konflik meminta tinjauan manusia. Pembuatan paket sintetis membutuhkan persetujuan eksplisit dan identitas pemberi persetujuan. Sistem tidak mengesahkan tanda tangan, mengotorisasi invoice, mengirim komunikasi eksternal, atau memindahkan uang. Skenario browser `WO-1028` fiktif; tiga work order NYC Parks adalah metadata operasional asli dengan sumber yang dapat diperiksa. Tidak ada foto, tanda tangan, hasil ukur, atau hasil penagihan yang dikarang untuk ketiga work order asli tersebut. Lihat [ResponsibleAI.md](ResponsibleAI.md).
 
 ## Sebelum menekan Submit
 

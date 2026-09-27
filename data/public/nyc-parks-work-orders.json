@@ -1,0 +1,37 @@
+{
+  "dataset": "NYC Parks Asset Management Parks System (AMPS) - Work Orders",
+  "publisher": "New York City Department of Parks and Recreation via NYC Open Data",
+  "dataset_url": "https://data.cityofnewyork.us/d/8sdw-8vja",
+  "query_url": "https://data.cityofnewyork.us/resource/8sdw-8vja.json?%24select=evt_code%2Cevt_desc%2Cevt_type%2Cevt_date%2Cevt_completed%2Cevt_udfchar13%2Cevt_udfchar06&%24where=evt_code+in%282791739%2C2792582%2C2792861%29&%24order=evt_code",
+  "retrieved_at_utc": "2026-09-27T17:39:54.519963+00:00",
+  "selected_rows_sha256": "87fb2031a46adaf41ca455e9928d27ccf6826705e7bead5f8c46d061ef685633",
+  "records": [
+    {
+      "evt_code": "2791739",
+      "evt_desc": "install air conditioners",
+      "evt_type": "JOB",
+      "evt_date": "2026-09-17T00:00:00.000",
+      "evt_completed": "2026-09-21T07:01:00.000",
+      "evt_udfchar13": "Completed",
+      "evt_udfchar06": "CARPENTER"
+    },
+    {
+      "evt_code": "2792582",
+      "evt_desc": "Inspect in/outdoor fridge  walk-in-boxes,heating,cooling and  complete logs",
+      "evt_type": "JOB",
+      "evt_date": "2026-09-21T00:00:00.000",
+      "evt_completed": "2026-09-21T11:38:00.000",
+      "evt_udfchar13": "Completed",
+      "evt_udfchar06": "STAENG"
+    },
+    {
+      "evt_code": "2792861",
+      "evt_desc": "work on plant repairs with oiler HVAC units belts and filters",
+      "evt_type": "JOB",
+      "evt_date": "2026-09-22T00:00:00.000",
+      "evt_completed": "2026-09-22T11:18:00.000",
+      "evt_udfchar13": "Completed",
+      "evt_udfchar06": "STAENG"
+    }
+  ]
+}

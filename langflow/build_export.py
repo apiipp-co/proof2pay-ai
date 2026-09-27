@@ -81,13 +81,13 @@ def main():
     output_node = next(n for n in basic["data"]["nodes"] if n["data"].get("type") == "ChatOutput")
     component = request("/api/v1/all")["custom_component"]["CustomComponent"]
     source_code = (ROOT / "components/proof2pay_component.py").read_text()
-    project = request("/api/v1/projects/", "POST", {"name": "PROOF2PAY AI - verified local demo", "description": "Synthetic evidence assessment and approval tools"})
+    project = request("/api/v1/projects/", "POST", {"name": "PROOF2PAY AI - verified local demo", "description": "Synthetic walkthrough and public work-order checks"})
     project_id = project["id"]
     flow_ids = []
     for action, name, description in [
-        ("analyze", "analyze_job_completion", "Extract labelled claims from the synthetic WO-1028 technician note; claims are not proof."),
-        ("validate", "validate_completion_evidence", "Assess synthetic WO-1028 against source-linked requirements and return blockers; never invoice."),
-        ("generate", "generate_completion_pack", "Generate a synthetic completion pack only with complete critical evidence and explicit approval; no external action."),
+        ("analyze", "analyze_job_completion", "Extract labelled synthetic claims or published NYC Parks source fields; descriptions are not proof."),
+        ("validate", "validate_completion_evidence", "Assess synthetic WO-1028 or public NYC Parks records; real records without billing proof stay blocked."),
+        ("generate", "generate_completion_pack", "Generate only a clearly synthetic pack after approval; refuse public-record billing packs without actual evidence."),
     ]:
         inp = node(input_node, "ChatInput", action, 100, 100)
         inp["data"]["node"]["template"]["input_value"]["value"] = '{"job_id":"WO-1028"}'

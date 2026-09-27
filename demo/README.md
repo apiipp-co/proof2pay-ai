@@ -12,4 +12,6 @@ Open <http://localhost:8000/app/>. The case begins with a technician completion 
 
 For the separate Langflow runtime, follow [`../langflow/README.md`](../langflow/README.md). The browser UI and Langflow are separate demo surfaces; the browser does not send calls to Langflow.
 
+For a **genuine published work order**, see the [live Langflow validation result for NYC Parks ID 2792861](public-work-order-2792861-result.json) and its [source snapshot](../data/README.md). The official record says `Completed`, while Proof2Pay returns `INSUFFICIENT_EVIDENCE` for billing. The source is public New York City metadata, not an Indonesian customer case.
+
 [`demo-script.md`](demo-script.md) contains a concise presenter narrative and an optional Bob integration scene once genuinely verified.
