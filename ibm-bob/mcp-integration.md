@@ -20,7 +20,7 @@ User:
 
 > Check whether WO-1028 is ready for billing and explain any blocker.
 
-If connected, Bob should select `validate_completion_evidence`. The flow and direct MCP endpoint have been tested; Bob selection itself has not.
+If connected, Bob could select `review_job_readiness` for the combined assessment or `validate_completion_evidence` for the validation result alone. Both flows and the direct MCP endpoint have been tested; Bob selection itself has not.
 
 Example result shape:
 

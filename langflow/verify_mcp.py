@@ -45,15 +45,17 @@ def main():
         opener.open(f"{BASE}/api/v1/auto_login", timeout=30).close()
     initialized = call("initialize", {"protocolVersion": "2025-06-18", "capabilities": {}, "clientInfo": {"name": "proof2pay-verifier", "version": "1.0"}}, 1)
     names = sorted(item["name"] for item in call("tools/list", {}, 2)["tools"])
-    expected = sorted(["analyze_job_completion", "validate_completion_evidence", "generate_completion_pack"])
+    expected = sorted(["analyze_job_completion", "validate_completion_evidence", "generate_completion_pack", "review_job_readiness"])
     blocked = tool_result("validate_completion_evidence", {"job_id": "WO-1028"}, 3)
     no_approval = tool_result("generate_completion_pack", {"job_id": "WO-1028"}, 4)
     public = tool_result("validate_completion_evidence", {"job_id": "2792861"}, 5)
+    main = tool_result("review_job_readiness", {"job_id": "2792861"}, 6)
     checks = {
-        "three_named_tools": names == expected,
+        "four_named_tools": names == expected,
         "validation_call_blocked": blocked.get("billing_state") == "BLOCKED" and len(blocked.get("blockers", [])) == 3,
         "generation_requires_approval": "approved=true" in no_approval.get("error", ""),
         "real_public_work_order_stays_blocked": public.get("synthetic") is False and public.get("record", {}).get("evt_code") == "2792861" and public.get("billing_state") == "INSUFFICIENT_EVIDENCE",
+        "main_review_flow_runs": main.get("billing_state") == "INSUFFICIENT_EVIDENCE" and main.get("role") == "deterministic_review_agent",
     }
     report = {
         "checked_at_utc": datetime.now(timezone.utc).isoformat(),

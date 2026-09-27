@@ -9,7 +9,7 @@ This document maps a **working judging hypothesis** to concrete evidence. The we
 | Problem Clarity | 20% | A narrow, observable handoff problem with target user and consequence | `Proposal.md`, `research/validation-results.md`, pitch slides 2-4 |
 | Innovation, Creativity, Feasibility & Monetization | 30% | Differentiated evidence intelligence, feasible MVP, credible SaaS path | `CompetitiveAnalysis.md`, `PRD.md`, working golden demo, `Roadmap.md` |
 | User Impact & Benefits | 20% | Clear operational outcome and measurable pilot metrics | `EVALUATION.md`, demo before/after workflow, impact slide |
-| Technical Execution | 10% | Real Bob -> MCP -> Langflow path with structured outputs | three Langflow exports and direct MCP tests exist; Bob call screenshot/log still needed |
+| Technical Execution | 10% | Real Bob -> MCP -> Langflow path with structured outputs | four runnable Langflow flows and direct MCP tests exist; native Agent awaits model setup and Bob call screenshot/log is still needed |
 | Responsible AI | 15% | Grounding, uncertainty, deterministic blocker rules, approval gates | `ResponsibleAI.md`, demo of `HUMAN_REVIEW`, action gate test |
 | Participation | 5% | Meet event/session requirements | event attendance/submission evidence outside repository as required |
 

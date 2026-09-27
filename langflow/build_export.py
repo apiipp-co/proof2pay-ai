@@ -54,9 +54,9 @@ def node(template, kind, suffix, x, y):
     return out
 
 
-def edge(source, target, output_name, input_name, output_types, input_types):
+def edge(source, target, output_name, input_name, output_types, input_types, field_type="str"):
     source_info = {"dataType": source["data"]["type"], "id": source["id"], "name": output_name, "output_types": output_types}
-    target_info = {"fieldName": input_name, "id": target["id"], "inputTypes": input_types, "type": "str"}
+    target_info = {"fieldName": input_name, "id": target["id"], "inputTypes": input_types, "type": field_type}
     compact = lambda value: json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace('"', "œ")
     readable = lambda value: json.dumps(value, ensure_ascii=False).replace('"', "œ")
     return {

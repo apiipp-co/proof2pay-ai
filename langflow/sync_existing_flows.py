@@ -1,4 +1,4 @@
-"""Update the three prepared local Langflow flows and re-export their JSON.
+"""Update the three tool flows and export all flows in the prepared project.
 
 This preserves flow IDs used by the Bob MCP configuration. It never creates a
 new project. Run only against the prepared local instance you control.
@@ -52,8 +52,8 @@ def main():
     archive = request("/api/v1/projects/download/" + project_id)
     with zipfile.ZipFile(io.BytesIO(archive)) as zipped:
         names = [name for name in zipped.namelist() if name.endswith(".json")]
-        if len(names) != 3:
-            raise RuntimeError("Expected three flow exports")
+        if len(names) < 3:
+            raise RuntimeError("Expected at least the three tool flow exports")
         for name in names:
             flow = json.loads(zipped.read(name))
             target = export_dir / (flow["name"] + ".json")

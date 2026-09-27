@@ -1,13 +1,13 @@
 {
-  "checked_at_utc": "2026-09-27T17:47:01.602713+00:00",
+  "checked_at_utc": "2026-09-27T18:14:31.360395+00:00",
   "langflow_version": "1.12.0",
   "server": "isolated local instance",
   "datasets": [
     "synthetic WO-1028",
     "three selected NYC Parks public records"
   ],
-  "passed": 11,
-  "total": 11,
+  "passed": 13,
+  "total": 13,
   "cases": [
     {
       "case": "claim_is_not_proof",
@@ -85,6 +85,20 @@
       "pass": true,
       "billing_state": null,
       "error": "Public record mode accepts only the official snapshot; external evidence is not verified in this prototype"
+    },
+    {
+      "case": "main_synthetic_review",
+      "flow": "review_job_readiness",
+      "pass": true,
+      "billing_state": "BLOCKED",
+      "error": null
+    },
+    {
+      "case": "main_public_review",
+      "flow": "review_job_readiness",
+      "pass": true,
+      "billing_state": "INSUFFICIENT_EVIDENCE",
+      "error": null
     }
   ]
 }

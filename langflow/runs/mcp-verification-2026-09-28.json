@@ -1,21 +1,23 @@
 {
-  "checked_at_utc": "2026-09-27T17:47:01.991689+00:00",
+  "checked_at_utc": "2026-09-27T18:14:36.862564+00:00",
   "endpoint": "local Langflow project MCP endpoint",
   "protocol_version": "2025-06-18",
   "tool_names": [
     "analyze_job_completion",
     "generate_completion_pack",
+    "review_job_readiness",
     "validate_completion_evidence"
   ],
   "synthetic_job": "WO-1028",
   "public_job": "2792861",
   "checks": {
-    "three_named_tools": true,
+    "four_named_tools": true,
     "validation_call_blocked": true,
     "generation_requires_approval": true,
-    "real_public_work_order_stays_blocked": true
+    "real_public_work_order_stays_blocked": true,
+    "main_review_flow_runs": true
   },
-  "passed": 4,
-  "total": 4,
+  "passed": 5,
+  "total": 5,
   "note": "Direct MCP client verification; IBM Bob invocation is not established by this report."
 }

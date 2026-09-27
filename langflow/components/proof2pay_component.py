@@ -41,6 +41,10 @@ DEFAULT_NOTE = "Preventive maintenance completed for AC Unit L2-07. Drain cleane
 def parse_request(raw):
     text = getattr(raw, "text", raw)
     text = str(text or "").strip()
+    if "<job_request_json>" in text:
+        if "</job_request_json>" not in text:
+            raise ValueError("Main flow request marker is incomplete")
+        text = text.split("<job_request_json>", 1)[1].split("</job_request_json>", 1)[0].strip()
     if text.startswith("{"):
         payload = json.loads(text)
         if not isinstance(payload, dict):
@@ -57,7 +61,27 @@ def parse_request(raw):
     return payload
 
 
-def public_result(payload):
+def public_validation(record, common):
+    checks = [
+        {"id": "PUBLIC-WORK-ORDER", "status": "OBSERVED", "source_field": "evt_code", "detail": "Official record ID is present"},
+        {"id": "PUBLIC-DESCRIPTION", "status": "OBSERVED", "source_field": "evt_desc", "detail": "Work order description is present; it is not a completion report"},
+        {"id": "PUBLIC-COMPLETION-STATUS", "status": "OBSERVED", "source_field": "evt_udfchar13,evt_completed", "detail": "Published record says Completed and contains a completion timestamp"},
+        {"id": "BILLING-TERMS", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No contract or billing terms in this selected public record"},
+        {"id": "CUSTOMER-ACCEPTANCE", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No customer acknowledgement in this selected public record"},
+        {"id": "COMPLETION-ARTIFACTS", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No inspection log, photos, or signed service report in this selected public record"},
+    ]
+    return {
+        **common,
+        "record": record,
+        "billing_state": "INSUFFICIENT_EVIDENCE",
+        "checks": checks,
+        "blockers": [item["id"] for item in checks if item["status"] == "NOT_AVAILABLE"],
+        "next_action": "Obtain the actual contract, completion artifacts, and customer acceptance from an authorized owner before making a billing decision.",
+        "caution": "These are prototype evidence gaps, not verified contractual requirements for this NYC Parks job.",
+    }
+
+
+def public_result(payload, action):
     """Only report fields actually published; never accept supplied mock artifacts."""
     if any(key in payload for key in ("evidence", "additional_evidence", "technician_note")):
         raise ValueError("Public record mode accepts only the official snapshot; external evidence is not verified in this prototype")
@@ -71,7 +95,7 @@ def public_result(payload):
         "source_dataset_url": PUBLIC_DATASET_URL,
         "snapshot_sha256": PUBLIC_SNAPSHOT_SHA256,
     }
-    if ACTION == "analyze":
+    if action == "analyze":
         return {
             **common,
             "record": record,
@@ -79,25 +103,21 @@ def public_result(payload):
             "method": "source_field_extraction",
             "caution": "The published description and Completed status do not prove each task was performed or accepted by a customer.",
         }
-    if ACTION == "validate":
-        checks = [
-            {"id": "PUBLIC-WORK-ORDER", "status": "OBSERVED", "source_field": "evt_code", "detail": "Official record ID is present"},
-            {"id": "PUBLIC-DESCRIPTION", "status": "OBSERVED", "source_field": "evt_desc", "detail": "Work order description is present; it is not a completion report"},
-            {"id": "PUBLIC-COMPLETION-STATUS", "status": "OBSERVED", "source_field": "evt_udfchar13,evt_completed", "detail": "Published record says Completed and contains a completion timestamp"},
-            {"id": "BILLING-TERMS", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No contract or billing terms in this selected public record"},
-            {"id": "CUSTOMER-ACCEPTANCE", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No customer acknowledgement in this selected public record"},
-            {"id": "COMPLETION-ARTIFACTS", "status": "NOT_AVAILABLE", "source_field": None, "detail": "No inspection log, photos, or signed service report in this selected public record"},
-        ]
+    if action == "validate":
+        return public_validation(record, common)
+    if action == "orchestrate":
+        validation = public_validation(record, common)
         return {
             **common,
-            "record": record,
-            "billing_state": "INSUFFICIENT_EVIDENCE",
-            "checks": checks,
-            "blockers": [item["id"] for item in checks if item["status"] == "NOT_AVAILABLE"],
-            "next_action": "Obtain the actual contract, completion artifacts, and customer acceptance from an authorized owner before making a billing decision.",
-            "caution": "These are prototype evidence gaps, not verified contractual requirements for this NYC Parks job.",
+            "role": "deterministic_review_agent",
+            "policy_version": "P2P-MAIN-1",
+            "analysis": {"work_order_description": record["evt_desc"], "source_field": "evt_desc", "status": "WORK_ORDER_DESCRIPTION_ONLY"},
+            "validation": validation,
+            "billing_state": validation["billing_state"],
+            "next_action": validation["next_action"],
+            "human_approval_required": True,
         }
-    if ACTION == "generate":
+    if action == "generate":
         return {**common, "billing_state": "INSUFFICIENT_EVIDENCE", "error": "Completion pack refused: public work-order metadata alone cannot verify billing terms or customer acceptance"}
     raise ValueError("Unknown flow action")
 
@@ -151,6 +171,54 @@ def assess(evidence):
     return {"job_id": "WO-1028", "billing_state": state, "requirements": rows, "blockers": [row["id"] for row in blockers], "synthetic": True}
 
 
+def run_action(payload, action):
+    if payload["job_id"] in PUBLIC_RECORDS:
+        return public_result(payload, action)
+    evidence = get_evidence(payload)
+    if action == "analyze":
+        note = str(payload.get("technician_note", DEFAULT_NOTE))
+        claims = []
+        if "cooling test" in note.lower():
+            claims.append({"text": "Cooling test performed", "source_evidence_id": "EV-003", "status": "CLAIM_ONLY"})
+        if "filter cleaned" in note.lower():
+            claims.append({"text": "Filter cleaned", "source_evidence_id": "EV-003", "status": "CLAIM_ONLY"})
+        return {"job_id": "WO-1028", "claims": claims, "evidence_ids": [item["id"] for item in evidence], "synthetic": True, "method": "rule_based_demo"}
+    if action == "validate":
+        return assess(evidence)
+    if action == "orchestrate":
+        validation = assess(evidence)
+        note = str(payload.get("technician_note", DEFAULT_NOTE))
+        claims = []
+        for phrase in ("cooling test", "filter cleaned"):
+            if phrase in note.lower():
+                claims.append({"text": phrase, "source_evidence_id": "EV-003", "status": "CLAIM_ONLY"})
+        return {
+            "job_id": "WO-1028",
+            "synthetic": True,
+            "role": "deterministic_review_agent",
+            "policy_version": "P2P-MAIN-1",
+            "analysis": {"claims": claims, "note_is_proof": False},
+            "validation": validation,
+            "billing_state": validation["billing_state"],
+            "recommended_actions": [row["next_action"] for row in validation["requirements"] if row["next_action"]],
+            "human_approval_required": True,
+            "next_tool": "generate_completion_pack only after critical evidence is complete and a named person approves",
+        }
+    if action == "generate":
+        approver = payload.get("approved_by")
+        if payload.get("approved") is not True or not isinstance(approver, str) or not approver.strip():
+            raise ValueError("Explicit approved=true and approved_by are required")
+        before = assess(evidence)
+        unresolved = [rid for rid in before["blockers"] if rid != "REQ-SERVICE-REPORT"]
+        if unresolved:
+            raise ValueError("Critical evidence unresolved: " + ", ".join(unresolved))
+        if not any(item["label"] == "service_report" for item in evidence):
+            evidence.append({"id": "EV-REPORT-DEMO", "type": "report", "label": "service_report", "synthetic": True})
+        after = assess(evidence)
+        return {"job_id": "WO-1028", "billing_state": "BILLING_READY_DEMO", "approved_by": approver.strip(), "evidence_ids": [item["id"] for item in evidence], "requirements": after["requirements"], "synthetic": True, "disclaimer": "Demo only; no invoice or external communication"}
+    raise ValueError("Unknown flow action")
+
+
 class Proof2PayComponent(Component):
     display_name = "Proof2Pay Evidence Tool"
     description = "Assess synthetic WO-1028 or source-linked public NYC Parks records without inventing evidence."
@@ -163,33 +231,7 @@ class Proof2PayComponent(Component):
     def build_output(self) -> Message:
         try:
             payload = parse_request(self.input_value)
-            if payload["job_id"] in PUBLIC_RECORDS:
-                return Message(text=json.dumps(public_result(payload), ensure_ascii=False, separators=(",", ":")))
-            evidence = get_evidence(payload)
-            if ACTION == "analyze":
-                note = str(payload.get("technician_note", DEFAULT_NOTE))
-                claims = []
-                if "cooling test" in note.lower():
-                    claims.append({"text": "Cooling test performed", "source_evidence_id": "EV-003", "status": "CLAIM_ONLY"})
-                if "filter cleaned" in note.lower():
-                    claims.append({"text": "Filter cleaned", "source_evidence_id": "EV-003", "status": "CLAIM_ONLY"})
-                result = {"job_id": "WO-1028", "claims": claims, "evidence_ids": [item["id"] for item in evidence], "synthetic": True, "method": "rule_based_demo"}
-            elif ACTION == "validate":
-                result = assess(evidence)
-            elif ACTION == "generate":
-                approver = payload.get("approved_by")
-                if payload.get("approved") is not True or not isinstance(approver, str) or not approver.strip():
-                    raise ValueError("Explicit approved=true and approved_by are required")
-                before = assess(evidence)
-                unresolved = [rid for rid in before["blockers"] if rid != "REQ-SERVICE-REPORT"]
-                if unresolved:
-                    raise ValueError("Critical evidence unresolved: " + ", ".join(unresolved))
-                if not any(item["label"] == "service_report" for item in evidence):
-                    evidence.append({"id": "EV-REPORT-DEMO", "type": "report", "label": "service_report", "synthetic": True})
-                after = assess(evidence)
-                result = {"job_id": "WO-1028", "billing_state": "BILLING_READY_DEMO", "approved_by": approver.strip(), "evidence_ids": [item["id"] for item in evidence], "requirements": after["requirements"], "synthetic": True, "disclaimer": "Demo only; no invoice or external communication"}
-            else:
-                raise ValueError("Unknown flow action")
+            result = run_action(payload, ACTION)
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
             result = {"error": str(exc), "synthetic": False if "payload" in locals() and payload.get("job_id") in PUBLIC_RECORDS else True, "action": ACTION}
         return Message(text=json.dumps(result, ensure_ascii=False, separators=(",", ":")))

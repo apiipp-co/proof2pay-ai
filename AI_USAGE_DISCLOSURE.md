@@ -6,7 +6,7 @@ This repository may use AI-assisted development tools during the hackathon. Keep
 
 ### Product AI
 
-The current PROOF2PAY demo uses deterministic rules in the browser and in three Langflow flows. It does **not** run an AI model or retrieval pipeline. AI interpretation of unstructured evidence is a proposed extension that needs a model, grounding checks, and separate evaluation before it can be claimed. Product safety boundaries are documented in `ResponsibleAI.md`.
+The working PROOF2PAY demo uses deterministic rules in the browser and in four Langflow flows. A fifth native Agent flow has its prompt and three tools connected, but no model is selected and it has not run. The working demo does **not** run an AI model or retrieval pipeline. AI interpretation of unstructured evidence is a proposed extension that needs a model, grounding checks, and separate evaluation before it can be claimed. Product safety boundaries are documented in `ResponsibleAI.md`.
 
 ### Development assistance
 

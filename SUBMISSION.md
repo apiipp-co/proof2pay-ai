@@ -30,9 +30,9 @@ Selain simulasi, flow Langflow menerima tiga ID work order **asli dari NYC Parks
 ## Implementasi yang dapat dibuktikan
 
 - Browser prototype lokal dengan empat tes Node yang lulus.
-- Tiga flow Langflow 1.12 asli: `analyze_job_completion`, `validate_completion_evidence`, dan `generate_completion_pack`; JSON ekspor, tangkapan layar, dan kode komponen tersedia.
-- Sebelas dari sebelas skenario API Langflow lulus: tujuh pada kasus sintetis, empat pada data publik asli dan pembatasan klaimnya.
-- Endpoint MCP proyek Langflow menampilkan tiga tool. Empat dari empat pemeriksaan MCP langsung lulus, termasuk validasi work order publik.
+- Empat flow Langflow 1.12 yang berjalan: `analyze_job_completion`, `validate_completion_evidence`, `generate_completion_pack`, dan `review_job_readiness`. Flow kelima, `agent_orchestration_requires_model`, memiliki node Agent, prompt, dan tiga tool yang terhubung tetapi memerlukan model sebelum bisa dijalankan. JSON ekspor, tangkapan layar, dan kode komponen tersedia.
+- Tiga belas dari tiga belas skenario API Langflow lulus: delapan pada kasus sintetis, lima pada data publik asli dan pembatasan klaimnya.
+- Endpoint MCP proyek Langflow menampilkan empat tool. Lima dari lima pemeriksaan MCP langsung lulus, termasuk review work order publik.
 - `.bob/mcp.json` berisi konfigurasi koneksi lokal untuk IBM Bob; Bob Settings menampilkan server proyek berstatus **Connected**. **Panggilan tool melalui Bob belum terverifikasi**.
 - Video layar 104 detik menunjukkan browser demo dan antarmuka Langflow; tanpa voiceover dan tanpa adegan Bob.
 
@@ -40,7 +40,7 @@ Artefak bukti: [status implementasi](IMPLEMENTATION_STATUS.md), [hasil evaluasi]
 
 ## Peran teknologi dan batas saat ini
 
-Langflow menjalankan tiga workflow berbasis komponen aturan deterministik untuk satu work order sintetis dan tiga catatan publik asli. MCP menyediakan permukaan tool yang bisa ditemukan dan dipanggil klien. IBM Bob telah terhubung sebagai klien MCP pada workspace, tetapi pemilihan dan pemanggilan tool melalui chat Bob belum terbukti. Versi saat ini tidak melakukan inferensi model AI, membaca data pelanggan privat, mengirim pesan, atau membuat invoice. Status `BILLING_READY_DEMO` hanya berlaku untuk simulasi, bukan otorisasi penagihan. Catatan NYC Parks bukan pilot pelanggan Indonesia dan tidak membuktikan dampak bisnis.
+Langflow menjalankan empat workflow berbasis komponen aturan deterministik untuk satu work order sintetis dan tiga catatan publik asli. Flow Agent native yang terpisah sudah terhubung ke tool analisis, validasi, dan pembuatan paket, tetapi belum dapat menjalankan inferensi karena model belum dipilih. MCP menyediakan empat tool yang bisa ditemukan dan dipanggil klien. IBM Bob telah terhubung sebagai klien MCP pada workspace, tetapi pemilihan dan pemanggilan tool melalui chat Bob belum terbukti. Versi yang berjalan saat ini tidak melakukan inferensi model AI, membaca data pelanggan privat, mengirim pesan, atau membuat invoice. Status `BILLING_READY_DEMO` hanya berlaku untuk simulasi, bukan otorisasi penagihan. Catatan NYC Parks bukan pilot pelanggan Indonesia dan tidak membuktikan dampak bisnis.
 
 ## Diferensiasi dan model bisnis
 

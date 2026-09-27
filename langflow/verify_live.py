@@ -58,6 +58,8 @@ def main():
         ("public_completed_not_billing_ready", "validate_completion_evidence", {"job_id": "2791739"}, lambda r: r["billing_state"] == "INSUFFICIENT_EVIDENCE" and r["record"]["evt_udfchar13"] == "Completed" and set(r["blockers"]) == {"BILLING-TERMS", "CUSTOMER-ACCEPTANCE", "COMPLETION-ARTIFACTS"}),
         ("public_pack_refused_even_with_approval", "generate_completion_pack", {"job_id": "2792582", "approved": True, "approved_by": "Demo"}, lambda r: r["synthetic"] is False and r["billing_state"] == "INSUFFICIENT_EVIDENCE" and "refused" in r.get("error", "")),
         ("public_injected_evidence_refused", "validate_completion_evidence", {"job_id": "2792861", "additional_evidence": [{"id": "EV-FAKE", "label": "customer_ack"}]}, lambda r: r["synthetic"] is False and "not verified" in r.get("error", "")),
+        ("main_synthetic_review", "review_job_readiness", {"job_id": "WO-1028"}, lambda r: r["billing_state"] == "BLOCKED" and r["role"] == "deterministic_review_agent" and r["human_approval_required"] is True and len(r["validation"]["blockers"]) == 3),
+        ("main_public_review", "review_job_readiness", {"job_id": "2792861"}, lambda r: r["billing_state"] == "INSUFFICIENT_EVIDENCE" and r["synthetic"] is False and r["analysis"]["source_field"] == "evt_desc" and r["human_approval_required"] is True),
     ]
     results = []
     for label, name, payload, check in cases:
