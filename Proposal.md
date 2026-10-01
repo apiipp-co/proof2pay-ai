@@ -4,7 +4,7 @@
 
 PROOF2PAY AI addresses a narrow but commercially meaningful handoff in field-service operations: **work can be operationally complete before it is financially ready to bill**. Field evidence may arrive as technician notes, photos, checklists, PDFs, customer signatures, and job records. Operations and finance must determine whether the evidence actually satisfies the job's completion requirements before billing can proceed.
 
-PROOF2PAY is an **Evidence-to-Billing Intelligence Layer** that ingests heterogeneous field evidence, builds a requirement-to-evidence map, identifies unsupported or ambiguous completion claims, proposes follow-up actions, and produces a human-approved completion package.
+PROOF2PAY is designed as an **Evidence-to-Billing Intelligence Layer** that maps requirements to field evidence, identifies unsupported or ambiguous completion claims, proposes follow-up actions, and produces a human-approved completion package. The current MVP demonstrates this with structured synthetic evidence and selected public work-order metadata. Automated interpretation of real photos and documents remains planned work.
 
 ## Why now
 
@@ -44,7 +44,7 @@ Instead of simply checking whether a file exists, PROOF2PAY maintains traceabili
 Every blocker has a reason, source, expected evidence type, status, and owner. The system never treats a percentage score as sufficient if a critical blocker remains.
 
 ### 3. Gap-to-Action Agent
-The system does not stop at "missing signature". It proposes the smallest next action, prepares the request or task, waits for approval when needed, and re-validates after new evidence arrives.
+The current demo proposes a specific next action and re-validates after synthetic evidence is added. Preparing a real request or task and following up through external systems are future steps that would require user approval.
 
 ### 4. Integration-first positioning
 PROOF2PAY is designed to sit between existing channels/storage/FSM and downstream billing rather than force an SME to replace its entire operational stack.

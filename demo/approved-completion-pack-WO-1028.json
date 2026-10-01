@@ -1,0 +1,83 @@
+{
+  "demo_only": true,
+  "job_id": "WO-1028",
+  "customer": "PT Demo Nusantara",
+  "service_type": "Preventive AC Maintenance",
+  "technician_claim_unverified": "Preventive maintenance completed for AC Unit L2-07. Drain cleaned and filter cleaned. Cooling test performed after service.",
+  "evidence_ids": [
+    "EV-001",
+    "EV-002",
+    "EV-003",
+    "EV-004",
+    "EV-005",
+    "EV-REPORT-DEMO"
+  ],
+  "service_report": {
+    "id": "EV-REPORT-DEMO",
+    "type": "report",
+    "label": "service_report",
+    "synthetic": true,
+    "approved_by": "Koordinator Demo",
+    "content": {
+      "job_id": "WO-1028",
+      "service_type": "Preventive AC Maintenance",
+      "photo_evidence_ids": [
+        "EV-001",
+        "EV-002"
+      ],
+      "cooling_reading": {
+        "value": 22,
+        "unit": "°C",
+        "source_evidence_id": "EV-004"
+      },
+      "customer_acknowledgement_evidence_id": "EV-005",
+      "technician_note_status": "CLAIM_ONLY",
+      "source_evidence_ids": [
+        "EV-001",
+        "EV-002",
+        "EV-003",
+        "EV-004",
+        "EV-005"
+      ]
+    }
+  },
+  "requirement_results": [
+    {
+      "id": "REQ-BEFORE-AFTER",
+      "status": "READY",
+      "source_ref": "SOW-1028#evidence",
+      "evidence_ids": [
+        "EV-001",
+        "EV-002"
+      ]
+    },
+    {
+      "id": "REQ-COOLING-TEST",
+      "status": "READY",
+      "source_ref": "SOW-1028#acceptance-test",
+      "evidence_ids": [
+        "EV-003",
+        "EV-004"
+      ]
+    },
+    {
+      "id": "REQ-CUSTOMER-ACK",
+      "status": "READY",
+      "source_ref": "SOW-1028#acceptance",
+      "evidence_ids": [
+        "EV-005"
+      ]
+    },
+    {
+      "id": "REQ-SERVICE-REPORT",
+      "status": "READY",
+      "source_ref": "WO-1028#closeout",
+      "evidence_ids": [
+        "EV-REPORT-DEMO"
+      ]
+    }
+  ],
+  "approved_by": "Koordinator Demo",
+  "status": "BILLING_READY_DEMO",
+  "disclaimer": "Data sintetis untuk demonstrasi. Tidak mengirim invoice atau dokumen ke pelanggan."
+}

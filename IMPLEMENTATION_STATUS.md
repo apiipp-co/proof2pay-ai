@@ -8,7 +8,7 @@ This is the source of truth for what has actually run. `DONE` means a local arti
 | Synthetic `WO-1028` case | DONE | `demo/golden-case-WO-1028.json`; all case entities are fictional |
 | Genuine public work-order snapshot | DONE | Three selected NYC Parks AMPS records with IDs, verbatim selected fields, exact query, and checksum in `data/public/nyc-parks-work-orders.json` |
 | Published Indonesian service-business evidence | DONE | Three source-linked AC-service case studies in `research/indonesia-field-studies.md`; secondary research by others, not our own interviews |
-| Browser prototype | DONE | `app/`, screenshot, and four Node tests passed on 2 October; in-memory rules only |
+| Browser prototype | DONE | `app/`, screenshot, and four Node tests passed on 2 October; in-memory rules only. The approved synthetic pack includes a structured source-linked report in `demo/approved-completion-pack-WO-1028.json`. |
 | Langflow `analyze_job_completion` | DONE | Real export and live test; labels synthetic note claims as `CLAIM_ONLY` and public descriptions as `WORK_ORDER_DESCRIPTION_ONLY` |
 | Langflow `validate_completion_evidence` | DONE | Real export and live tests for synthetic blockers and public-record evidence gaps |
 | Langflow `generate_completion_pack` | DONE | Real export and live tests; source-linked synthetic pack requires approval, and public-record generation is refused |

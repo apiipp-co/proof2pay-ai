@@ -36,12 +36,23 @@ export function finalize(caseData, evidence, approver) {
   const before = assess(caseData, evidence);
   const nonReportBlockers = before.rows.filter((row) => row.critical && row.id !== "REQ-SERVICE-REPORT" && row.status !== "READY");
   if (nonReportBlockers.length) throw new Error("Bukti kritis belum lengkap; paket tidak dapat difinalisasi.");
+  const reading = evidence.find((item) => item.label === "cooling_reading" && Number.isFinite(item.value) && item.unit);
+  const acknowledgement = evidence.find((item) => item.label === "customer_ack" && item.confirmed === true);
   const report = {
     id: "EV-REPORT-DEMO",
     type: "report",
     label: "service_report",
     synthetic: true,
     approved_by: approver.trim(),
+    content: {
+      job_id: caseData.job.job_id,
+      service_type: caseData.job.service_type,
+      photo_evidence_ids: evidence.filter((item) => ["before_photo", "after_photo"].includes(item.label)).map((item) => item.id),
+      cooling_reading: { value: reading.value, unit: reading.unit, source_evidence_id: reading.id },
+      customer_acknowledgement_evidence_id: acknowledgement.id,
+      technician_note_status: "CLAIM_ONLY",
+      source_evidence_ids: evidence.map((item) => item.id),
+    },
   };
   const nextEvidence = evidence.some((item) => item.label === "service_report") ? evidence : [...evidence, report];
   const result = assess(caseData, nextEvidence, true);
@@ -56,6 +67,7 @@ export function finalize(caseData, evidence, approver) {
       service_type: caseData.job.service_type,
       technician_claim_unverified: caseData.technician_note,
       evidence_ids: nextEvidence.map((item) => item.id),
+      service_report: nextEvidence.find((item) => item.label === "service_report"),
       requirement_results: result.rows.map(({ id, status, source_ref, evidence_ids }) => ({ id, status, source_ref, evidence_ids })),
       approved_by: approver.trim(),
       status: "BILLING_READY_DEMO",

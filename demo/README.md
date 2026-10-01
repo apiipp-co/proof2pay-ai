@@ -1,6 +1,6 @@
 # Demo · synthetic WO-1028
 
-[Watch the 104-second screen recording](proof2pay-demo.mp4). It shows the browser prototype moving from missing evidence to an approved synthetic completion pack, then the local Langflow validation graph and MCP tool list. The recording is silent and does not show a Bob call.
+[Watch the 104-second screen recording](proof2pay-demo.mp4). It shows the browser prototype moving from missing evidence to an approved synthetic completion pack, then the local Langflow validation graph and MCP tool list. The recording is silent and does not show a Bob call. [Inspect the resulting structured demo pack](approved-completion-pack-WO-1028.json): it lists the photo IDs, measured cooling reading, customer acknowledgement, claim-only technician note status, and human approver. The browser and Langflow generators produced matching report content on 2 October 2026.
 
 ## Reproduce
 

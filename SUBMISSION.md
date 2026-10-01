@@ -50,6 +50,7 @@ Selain simulasi, flow Langflow menerima tiga ID work order **asli dari NYC Parks
 ## Implementasi yang dapat dibuktikan
 
 - Browser prototype yang dapat dibuka melalui GitHub Pages, dengan empat tes Node yang lulus.
+- [Contoh paket penyelesaian sintetis](demo/approved-completion-pack-WO-1028.json) memuat laporan terstruktur dengan ID foto, hasil ukur, konfirmasi pelanggan, dan persetujuan manusia; isinya cocok antara generator browser dan Langflow dalam pemeriksaan lokal.
 - Empat flow Langflow 1.12 berbasis aturan yang berjalan: `analyze_job_completion`, `validate_completion_evidence`, `generate_completion_pack`, dan `review_job_readiness`. Flow Agent native `agent_orchestration_local_granite` memakai IBM Granite 3.3 2B lokal melalui Ollama, memanggil tool review, dan menampilkan hasil yang diperiksa ulang oleh output guard. Template `agent_orchestration_requires_model` tersedia untuk penyedia model lain. JSON ekspor dan kode komponen tersedia.
 - Tiga belas dari tiga belas skenario API Langflow lulus pada 2 Oktober: delapan pada kasus sintetis, lima pada data publik asli dan pembatasan klaimnya. Lima dari lima pemeriksaan hasil akhir Agent Granite juga lulus; tes ini tidak mengukur akurasi interpretasi model.
 - Endpoint MCP proyek Langflow menampilkan empat tool. Lima dari lima pemeriksaan MCP langsung lulus pada 2 Oktober, termasuk review work order publik.

@@ -9,7 +9,7 @@
 | Informasi Tim | Individual |
 | Team Member 1 — Full Name | Isi **nama lengkap sesuai pendaftaran dan sertifikat asli**. |
 | Team Member 1 — Email | Isi email pendaftaran/akun yang benar. |
-| Team Member 1 — University / Institution | Isi institusi sebenarnya; boleh kosong jika tidak berlaku. |
+| Team Member 1 — University / Institution | Isi institusi sebenarnya. Walaupun kolom ini tidak bertanda wajib, halaman program menyebut peserta harus mahasiswa aktif D3–S3; pastikan data pendaftaran dan status Anda sesuai. |
 | Team Member 1 — Phone Number | Isi nomor aktif yang benar. |
 | Track — IBM SkillsBuild | Centang hanya track yang benar-benar diselesaikan. |
 | Akun email IBM SkillsBuild | Isi email akun SkillsBuild yang sebenarnya. |
@@ -85,7 +85,7 @@ Unggah berkas [`docs/02-pitch-deck.pdf`](docs/02-pitch-deck.pdf) (PDF, sekitar 5
 
 ### Project / Prototype Screenshot
 
-Unggah 5 file pilihan pada folder `FORM_UPLOADS_PROOF2PAY/` di sebelah repository pada komputer peserta. Urutannya mencakup tampilan terblokir, flow review, MCP tools, koneksi Bob, dan hasil setelah persetujuan. Screenshot Bob hanya membuktikan status koneksi, bukan panggilan tool.
+Unggah 5 file pilihan pada folder `FORM_UPLOADS_PROOF2PAY/` di sebelah repository pada komputer peserta. Urutannya mencakup tampilan terblokir, flow review, empat MCP tools terkini, koneksi Bob, dan konfirmasi paket setelah persetujuan. Screenshot Bob hanya membuktikan status koneksi, bukan panggilan tool.
 
 ### Dampak yang Dihasilkan
 
