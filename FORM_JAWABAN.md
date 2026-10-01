@@ -81,7 +81,7 @@ Repository publik berisi README, kode prototipe, flow Langflow, dokumentasi, dia
 
 ### Pitching Deck
 
-Unggah berkas [`docs/02-pitch-deck.pdf`](docs/02-pitch-deck.pdf) (PDF, sekitar 584 KB). Jangan tempel URL saja karena kolom ini meminta unggahan satu file.
+Unggah berkas [`docs/02-pitch-deck-stage1-final.pdf`](docs/02-pitch-deck-stage1-final.pdf) (PDF, sekitar 585 KB). Salinan dengan nama sederhana tersedia di folder `FORM_UPLOADS_PROOF2PAY/`. Jangan tempel URL saja karena kolom ini meminta unggahan satu file.
 
 ### Project / Prototype Screenshot
 

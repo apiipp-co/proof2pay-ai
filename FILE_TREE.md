@@ -10,7 +10,7 @@
 | `langflow/screenshots/` | Genuine local Langflow project, graph, and tool list captures |
 | `.bob/` | Project MCP configuration pointing to the local Langflow endpoint |
 | `ibm-bob/` | Bob setup, connected-state screenshot, and tool documentation; Bob call remains unverified |
-| `demo/` | Synthetic case, presenter script, and 104-second MP4 |
+| `demo/` | Synthetic case, presenter script, and 76-second Stage 1 MP4 |
 | `docs/` | Pitch deck and supporting PDF documents |
 | `design/` | Concept visuals, separate from runtime screenshots |
 | `research/` | Secondary references, validation limits, and future interview materials |

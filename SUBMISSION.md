@@ -11,7 +11,7 @@
 | Tagline | Finish the job. Prove the job. Get paid. |
 | Repository | [github.com/apiipp-co/proof2pay-ai](https://github.com/apiipp-co/proof2pay-ai) |
 | Demo interaktif | [apiipp-co.github.io/proof2pay-ai/app/](https://apiipp-co.github.io/proof2pay-ai/app/) (simulasi statis, tanpa login) |
-| Video demo | [Tonton video 104 detik](https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo.mp4) (rekaman layar tanpa narasi) |
+| Video demo | [Tonton video 76 detik](https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo-stage1-final.mp4) (rekaman browser diikuti dua cuplikan hasil terkini; tanpa narasi) |
 | Demo lokal | `python3 -m http.server 8000`, lalu `http://localhost:8000/app/` |
 
 ## Tautan siap tempel ke formulir
@@ -20,9 +20,9 @@
 |---|---|
 | Repository | https://github.com/apiipp-co/proof2pay-ai |
 | MVP interaktif | https://apiipp-co.github.io/proof2pay-ai/app/ |
-| Video demo | https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo.mp4 |
-| Pitch deck PDF | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/02-pitch-deck.pdf |
-| Pitch deck PPTX | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/02-pitch-deck.pptx |
+| Video demo | https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo-stage1-final.mp4 |
+| Pitch deck PDF | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/02-pitch-deck-stage1-final.pdf |
+| Pitch deck PPTX | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/02-pitch-deck-stage1-final.pptx |
 | Dokumentasi teknis | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/03-technical-documentation.pdf |
 | Diagram arsitektur | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/05-system-architecture.pdf |
 | Ringkasan satu halaman | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/09-judge-one-pager.pdf |
@@ -55,9 +55,9 @@ Selain simulasi, flow Langflow menerima tiga ID work order **asli dari NYC Parks
 - Tiga belas dari tiga belas skenario API Langflow lulus pada 2 Oktober: delapan pada kasus sintetis, lima pada data publik asli dan pembatasan klaimnya. Lima dari lima pemeriksaan hasil akhir Agent Granite juga lulus; tes ini tidak mengukur akurasi interpretasi model.
 - Endpoint MCP proyek Langflow menampilkan empat tool. Lima dari lima pemeriksaan MCP langsung lulus pada 2 Oktober, termasuk review work order publik.
 - `.bob/mcp.json` berisi konfigurasi koneksi lokal untuk IBM Bob; Bob Settings menampilkan server proyek berstatus **Connected**. **Panggilan tool melalui Bob belum terverifikasi**.
-- Video layar 104 detik menunjukkan browser demo dan antarmuka Langflow; tanpa voiceover dan tanpa adegan Bob.
+- Video 76 detik menunjukkan interaksi browser, hasil paket demo setelah persetujuan, dan daftar empat tool MCP Langflow terkini; tanpa voiceover dan tanpa adegan Bob.
 
-Artefak bukti: [status implementasi](IMPLEMENTATION_STATUS.md), [hasil evaluasi](evaluation/README.md), [ekspor Langflow](langflow/exports/), [laporan uji](langflow/runs/), [video](demo/proof2pay-demo.mp4), [pitch deck](docs/02-pitch-deck.pdf).
+Artefak bukti: [status implementasi](IMPLEMENTATION_STATUS.md), [hasil evaluasi](evaluation/README.md), [ekspor Langflow](langflow/exports/), [laporan uji](langflow/runs/), [video final](demo/proof2pay-demo-stage1-final.mp4), [pitch deck final](docs/02-pitch-deck-stage1-final.pdf).
 
 ## Peran teknologi dan batas saat ini
 

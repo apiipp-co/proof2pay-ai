@@ -8,10 +8,10 @@ PROOF2PAY helps B2B field-service teams decide whether a completed job has enoug
 
 ## Watch and try
 
-- [104-second demo video](demo/proof2pay-demo.mp4) (screen recording, no voiceover).
+- [76-second Stage 1 demo video](demo/proof2pay-demo-stage1-final.mp4) (browser walkthrough followed by current result and MCP screenshots; no voiceover).
 - [Inspect an approved synthetic completion pack](demo/approved-completion-pack-WO-1028.json), including a structured report with source evidence IDs and human approver.
 - [Open the browser MVP](https://apiipp-co.github.io/proof2pay-ai/app/) (static, synthetic demo; no login or keys).
-- [Pitch deck](docs/02-pitch-deck.pdf) · [one-page judge brief](docs/09-judge-one-pager.pdf) · [submission summary](SUBMISSION.md) · [form answers](FORM_JAWABAN.md).
+- [Final Stage 1 pitch deck](docs/02-pitch-deck-stage1-final.pdf) · [one-page judge brief](docs/09-judge-one-pager.pdf) · [submission summary](SUBMISSION.md) · [form answers](FORM_JAWABAN.md).
 - [Genuine public work-order snapshot and provenance](data/README.md): IDs `2791739`, `2792582`, and `2792861`.
 - Start the browser demo with `python3 -m http.server 8000` from this folder, then open <http://localhost:8000/app/>.
 - Run the browser checks with `node --test app/core.test.mjs` (Node 18+).

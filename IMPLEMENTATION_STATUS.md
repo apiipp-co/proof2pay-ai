@@ -21,7 +21,7 @@ This is the source of truth for what has actually run. `DONE` means a local arti
 | Actual customer service evidence or commercial outcome | NOT DONE | No private customer work order, signed acceptance, photos, contract, paid invoice, or pilot outcome was provided |
 | Public static browser demo | DONE | GitHub Pages serves `app/` at `https://apiipp-co.github.io/proof2pay-ai/app/`; it uses in-browser state and synthetic data |
 | Hosted Langflow backend | NOT DEPLOYED | Langflow and Ollama run only on the prepared local Mac |
-| Demo video | DONE | `demo/proof2pay-demo.mp4`; silent screen recording of browser demo and Langflow UI |
+| Demo video | DONE | `demo/proof2pay-demo-stage1-final.mp4`; silent browser walkthrough followed by current synthetic pack and four-tool MCP screenshots |
 | Primary user interviews or measured commercial impact | NOT DONE | Published local cases strengthen secondary evidence, but PROOF2PAY has no consented interviews, pilot, or measured business result |
 | Organizer form submission | NOT DONE | Final links and field-by-field answers are prepared in `FORM_JAWABAN.md`; participant must enter correct identity, upload their authentic IBM SkillsBuild University Education course certificate, deck and screenshots, then submit personally. Hackathon Certificate of Participation follows submission per organizer message. |
 

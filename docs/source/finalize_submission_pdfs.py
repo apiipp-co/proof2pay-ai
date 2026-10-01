@@ -137,7 +137,7 @@ def one_pager():
         p("Business hypothesis", "heading"),
         p("B2B SaaS for field-service operations teams, beginning with AC/HVAC. Pricing, demand, and the best first vertical still require customer interviews."),
         Spacer(1, 7),
-        p('<link href="https://apiipp-co.github.io/proof2pay-ai/app/" color="#087E83">Open browser demo</link>  |  <link href="https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo.mp4" color="#087E83">104-second video</link>  |  <link href="https://github.com/apiipp-co/proof2pay-ai" color="#087E83">Repository and evidence</link>', "small"),
+        p('<link href="https://apiipp-co.github.io/proof2pay-ai/app/" color="#087E83">Open browser demo</link>  |  <link href="https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo-stage1-final.mp4" color="#087E83">76-second video</link>  |  <link href="https://github.com/apiipp-co/proof2pay-ai" color="#087E83">Repository and evidence</link>', "small"),
     ])
     path = DOCS / "09-judge-one-pager.pdf"
     pdf = make_pdf(story, pagesize=A4)
