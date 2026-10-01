@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-10-01T22:38:00.803128+00:00",
+  "flow": "agent_orchestration_local_granite",
+  "model": "granite3.3:2b via local Ollama",
+  "input": {
+    "job_id": "WO-1028"
+  },
+  "checks": {
+    "graph_returns_synthetic_case": true,
+    "guard_is_authoritative": true,
+    "existing_photos_remain_ready": true,
+    "critical_blockers_remain": true,
+    "approval_remains_required": true
+  },
+  "passed": 5,
+  "total": 5,
+  "limit": "Guarded final-output check only; does not score model interpretation or prove an IBM Bob tool call."
+}

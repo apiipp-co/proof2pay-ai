@@ -6,7 +6,7 @@ This repository may use AI-assisted development tools during the hackathon. Keep
 
 ### Product AI
 
-The working PROOF2PAY demo uses deterministic rules in the browser and in four Langflow flows. A fifth native Agent flow has its prompt and three tools connected, but no model is selected and it has not run. The working demo does **not** run an AI model or retrieval pipeline. AI interpretation of unstructured evidence is a proposed extension that needs a model, grounding checks, and separate evaluation before it can be claimed. Product safety boundaries are documented in `ResponsibleAI.md`.
+The browser demo and four MCP-exposed Langflow flows use deterministic rules. A separate native Agent flow runs local IBM Granite 3.3 2B through Ollama and calls the source-linked review tool. The model's free-form summary once misstated photo status, so the flow discards that draft and publishes a deterministic guarded result. This demonstrates model orchestration and a tool call, **not** reliable interpretation of unstructured field evidence. No retrieval pipeline or model accuracy result is claimed. Product safety boundaries are documented in `ResponsibleAI.md`.
 
 ### Development assistance
 

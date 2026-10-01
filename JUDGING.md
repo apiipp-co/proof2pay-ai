@@ -1,23 +1,22 @@
 # Judging Evidence Map
 
-This document maps a **working judging hypothesis** to concrete evidence. The weight percentages below came from team planning materials and were not verified against an official published 2026 rubric. The [official program page](https://hacktiv8.com/projects/ibm/hackathon) confirms the broad deliverables but does not publish these weights. Replace them if organizers provide an official rubric. Every scoring claim should point to a file, screenshot, demo step, test, or cited source.
+This document maps likely judge questions to concrete evidence. The [official program page](https://hacktiv8.com/projects/ibm/hackathon) asks for an MVP/prototype, business model, demo video, and documentation/technical diagram; it does not publish criterion weights. Every claim should point to a file, screenshot, demo step, test, or cited source.
 
 ## Rubric map
 
-| Criterion | Weight | What PROOF2PAY must prove | Evidence before final submission |
-|---|---:|---|---|
-| Problem Clarity | 20% | A narrow, observable handoff problem with target user and consequence | `Proposal.md`, `research/validation-results.md`, pitch slides 2-4 |
-| Innovation, Creativity, Feasibility & Monetization | 30% | Differentiated evidence intelligence, feasible MVP, credible SaaS path | `CompetitiveAnalysis.md`, `PRD.md`, working golden demo, `Roadmap.md` |
-| User Impact & Benefits | 20% | Clear operational outcome and measurable pilot metrics | `EVALUATION.md`, demo before/after workflow, impact slide |
-| Technical Execution | 10% | Real Bob -> MCP -> Langflow path with structured outputs | four runnable Langflow flows and direct MCP tests exist; native Agent awaits model setup and Bob call screenshot/log is still needed |
-| Responsible AI | 15% | Grounding, uncertainty, deterministic blocker rules, approval gates | `ResponsibleAI.md`, demo of `HUMAN_REVIEW`, action gate test |
-| Participation | 5% | Meet event/session requirements | event attendance/submission evidence outside repository as required |
+| Area | What PROOF2PAY can show | Evidence / remaining limit |
+|---|---|---|
+| Problem and user | A specific gap between field completion and evidence for billing handoff | `Proposal.md`, `research/validation-results.md`, pitch slides 2–4; no direct customer interview yet |
+| Solution and business model | Traceable evidence review, blockers, next actions, and a SaaS hypothesis | `CompetitiveAnalysis.md`, `PRD.md`, working golden demo, `Roadmap.md`; pricing remains unvalidated |
+| MVP and technical execution | Browser prototype, four deterministic Langflow tools, direct MCP endpoint, and guarded local Granite Agent | `app/`, `langflow/exports/`, `langflow/runs/`; a Bob tool call is still unverified |
+| Safety | Critical blockers, conflict review, source links, and explicit human approval | `ResponsibleAI.md`, `HUMAN_REVIEW` demo, approval-gate checks |
+| Participation | Hackathon Class and Stage 1 eligibility evidence | Participant must supply their own authentic certificate and registration details |
 
 ## Judge questions we should be ready for
 
 ### “Why does this need AI?”
 
-Field evidence can be unstructured and heterogeneous, so a future AI layer could help extract claims and propose evidence matches. **The current demo does not perform model inference.** It tests the traceability and approval workflow with deterministic rules; any AI extension must be evaluated separately.
+Field evidence can be unstructured and heterogeneous. The local Granite Agent demonstrates model inference and tool selection, but its free-form draft once misstated evidence status. The final result comes from a deterministic output guard. The current demo does not establish reliable model extraction or matching of field photos and documents; that capability needs separate evaluation.
 
 ### “Why not just use a checklist?”
 
@@ -33,7 +32,7 @@ Answer only from [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md). Never t
 
 ### “What is your measurable result?”
 
-For the hackathon: report test-set results from [`evaluation/`](evaluation/) and golden-demo timings. Do not fabricate business uplift before a pilot exists.
+For the hackathon: report test-set results from [`evaluation/`](evaluation/) and the golden demo. No customer productivity or billing-delay outcome has been measured.
 
 ## Final evidence gate
 

@@ -10,7 +10,7 @@ const stateCopy = {
   BLOCKED: ["Belum siap ditagihkan", "Bukti kritis masih perlu dilengkapi."],
   HUMAN_REVIEW: ["Perlu tinjauan manusia", "Ada bukti yang bertentangan atau perlu dikonfirmasi."],
   AWAITING_APPROVAL: ["Menunggu persetujuan", "Bukti lengkap; keputusan final menunggu koordinator."],
-  BILLING_READY: ["Siap untuk billing", "Paket demo sudah disetujui dan dibuat."],
+  BILLING_READY: ["Siap untuk billing (demo)", "Paket demo sudah disetujui dan dibuat."],
 };
 
 function render() {

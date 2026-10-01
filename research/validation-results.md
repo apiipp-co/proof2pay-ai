@@ -5,6 +5,8 @@
 **Secondary validation: supported.**  
 **Primary validation for Indonesian B2B field-service SMEs: pending.**
 
+Three [published Indonesian AC-service case studies](indonesia-field-studies.md) now give concrete local examples of technician-to-admin re-entry, misplaced paper notes, and limited service detail available to customers. Their authors collected the case information; PROOF2PAY did not interview those businesses. These cases strengthen the problem hypothesis but do not prove a billing-delay frequency or product-market fit.
+
 ## What public evidence supports
 
 Public field-service documentation shows that job workflows commonly involve forms/checklists, photos, signatures, completion/closeout, review/approval, and invoicing. This supports the existence of a meaningful handoff between field completion and billing-related administration.
@@ -21,6 +23,8 @@ The current desk research does not establish:
 - willingness to pay for PROOF2PAY;
 - whether HVAC is the best first vertical;
 - whether a standalone intelligence layer is preferred to an existing FSM module.
+
+The published Indonesian cases also do not supply consented work orders, customer acceptance documents, pilot metrics, or permission to contact their subjects. They should not be presented as a PROOF2PAY field study.
 
 These remain hypotheses for primary validation.
 

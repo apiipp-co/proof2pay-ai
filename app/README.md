@@ -1,6 +1,6 @@
 # MVP Application
 
-This folder contains a runnable, dependency-free browser prototype for the synthetic `WO-1028` case.
+This folder contains a runnable, dependency-free browser prototype for the synthetic `WO-1028` case. The static demo is also available at [GitHub Pages](https://apiipp-co.github.io/proof2pay-ai/app/).
 
 ## Run
 

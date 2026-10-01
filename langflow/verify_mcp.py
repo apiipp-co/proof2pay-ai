@@ -69,7 +69,7 @@ def main():
         "total": len(checks),
         "note": "Direct MCP client verification; IBM Bob invocation is not established by this report.",
     }
-    target = ROOT / "runs/mcp-verification-2026-09-28.json"
+    target = ROOT / "runs" / f"mcp-verification-{datetime.now().astimezone().date().isoformat()}.json"
     target.parent.mkdir(exist_ok=True)
     target.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     for name, passed in checks.items():

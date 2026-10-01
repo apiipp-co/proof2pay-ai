@@ -2,6 +2,9 @@
 node_modules/
 .venv/
 venv/
+__pycache__/
+*.pyc
+.codex-ppt-build/
 
 # env / secrets
 .env

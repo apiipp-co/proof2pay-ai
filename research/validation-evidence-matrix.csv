@@ -2,5 +2,8 @@ id,claim,source,evidence_type,limitation
 V-01,Field-service workflows require documentation/forms/signatures around completion and billing,ServiceTitan official help,secondary-official,supports category; does not measure Indonesian SME prevalence
 V-02,Completed jobs can pass through review/approval before invoicing,ServiceM8 official help,secondary-official,supports state/handoff concept
 V-03,Formal Indonesian workflows may require BAST/supporting docs before payment,INAPROC/JDIH official sources,secondary-official-local-context,specific contexts only; do not generalize to all SMEs
+V-04,An Indonesian AC contractor reported paper technician records and repeated administrative cross-checking,https://repository.unama.ac.id/2644/,secondary-published-local-case,does not measure billing delay or validate PROOF2PAY
+V-05,An Indonesian AC service business reported misplaced paper payment notes and difficult retrieval,https://repository.bsi.ac.id/repo/files/316490/download/Jurnal-PIW-GENAP-Sistem-Informasi-Penerimaan-Order-Service-AC-Berbasis-Desktop-%28SIPEDES%29-Pada-CV-Pelangi-Teknik.pdf,secondary-published-local-case,post-service notes are not necessarily pre-invoice evidence
+V-06,An Indonesian AC service case reported limited service detail available to customers,https://repository.ukdw.ac.id/2774/,secondary-published-local-case,does not establish billing blockers or AI need
 H-01,Indonesian B2B field-service SMEs frequently lose time chasing completion evidence,pending primary research,hypothesis,not yet proven
 H-02,Teams will pay for a standalone evidence-intelligence layer,pending primary research,hypothesis,not yet proven

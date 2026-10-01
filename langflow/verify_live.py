@@ -68,7 +68,7 @@ def main():
         results.append({"case": label, "flow": name, "pass": passed, "billing_state": output.get("billing_state"), "error": output.get("error")})
         print(f"{'PASS' if passed else 'FAIL'} {label}")
     report = {"checked_at_utc": datetime.now(timezone.utc).isoformat(), "langflow_version": "1.12.0", "server": "isolated local instance", "datasets": ["synthetic WO-1028", "three selected NYC Parks public records"], "passed": sum(row["pass"] for row in results), "total": len(results), "cases": results}
-    target = ROOT / "runs" / "verification-2026-09-28.json"
+    target = ROOT / "runs" / f"verification-{datetime.now().astimezone().date().isoformat()}.json"
     target.parent.mkdir(exist_ok=True)
     target.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     if report["passed"] != report["total"]:

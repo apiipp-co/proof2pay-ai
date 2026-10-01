@@ -1,0 +1,104 @@
+{
+  "checked_at_utc": "2026-10-01T22:34:53.402394+00:00",
+  "langflow_version": "1.12.0",
+  "server": "isolated local instance",
+  "datasets": [
+    "synthetic WO-1028",
+    "three selected NYC Parks public records"
+  ],
+  "passed": 13,
+  "total": 13,
+  "cases": [
+    {
+      "case": "claim_is_not_proof",
+      "flow": "analyze_job_completion",
+      "pass": true,
+      "billing_state": null,
+      "error": null
+    },
+    {
+      "case": "initial_blockers",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "BLOCKED",
+      "error": null
+    },
+    {
+      "case": "reading_and_ack_still_need_report",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "BLOCKED",
+      "error": null
+    },
+    {
+      "case": "explicit_approval_required",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": null,
+      "error": "Explicit approved=true and approved_by are required"
+    },
+    {
+      "case": "missing_evidence_cannot_be_approved",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": null,
+      "error": "Critical evidence unresolved: REQ-COOLING-TEST, REQ-CUSTOMER-ACK"
+    },
+    {
+      "case": "conflict_requires_review",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "HUMAN_REVIEW",
+      "error": null
+    },
+    {
+      "case": "approved_pack_is_traceable",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": "BILLING_READY_DEMO",
+      "error": null
+    },
+    {
+      "case": "public_record_is_source_linked",
+      "flow": "analyze_job_completion",
+      "pass": true,
+      "billing_state": null,
+      "error": null
+    },
+    {
+      "case": "public_completed_not_billing_ready",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": "INSUFFICIENT_EVIDENCE",
+      "error": null
+    },
+    {
+      "case": "public_pack_refused_even_with_approval",
+      "flow": "generate_completion_pack",
+      "pass": true,
+      "billing_state": "INSUFFICIENT_EVIDENCE",
+      "error": "Completion pack refused: public work-order metadata alone cannot verify billing terms or customer acceptance"
+    },
+    {
+      "case": "public_injected_evidence_refused",
+      "flow": "validate_completion_evidence",
+      "pass": true,
+      "billing_state": null,
+      "error": "Public record mode accepts only the official snapshot; external evidence is not verified in this prototype"
+    },
+    {
+      "case": "main_synthetic_review",
+      "flow": "review_job_readiness",
+      "pass": true,
+      "billing_state": "BLOCKED",
+      "error": null
+    },
+    {
+      "case": "main_public_review",
+      "flow": "review_job_readiness",
+      "pass": true,
+      "billing_state": "INSUFFICIENT_EVIDENCE",
+      "error": null
+    }
+  ]
+}
