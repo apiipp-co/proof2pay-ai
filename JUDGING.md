@@ -10,7 +10,7 @@ This document maps likely judge questions to concrete evidence. The [official pr
 | Solution and business model | Traceable evidence review, blockers, next actions, and a SaaS hypothesis | `CompetitiveAnalysis.md`, `PRD.md`, working golden demo, `Roadmap.md`; pricing remains unvalidated |
 | MVP and technical execution | Browser prototype, four deterministic Langflow tools, direct MCP endpoint, and guarded local Granite Agent | `app/`, `langflow/exports/`, `langflow/runs/`; a Bob tool call is still unverified |
 | Safety | Critical blockers, conflict review, source links, and explicit human approval | `ResponsibleAI.md`, `HUMAN_REVIEW` demo, approval-gate checks |
-| Participation | Hackathon Class and Stage 1 eligibility evidence | Participant must supply their own authentic certificate and registration details |
+| Participation | Course completion and Stage 1 submission | Official form asks for an authentic IBM SkillsBuild University Education course certificate and matching registration details; Hackathon Certificate of Participation follows submission per the organizer's message |
 
 ## Judge questions we should be ready for
 

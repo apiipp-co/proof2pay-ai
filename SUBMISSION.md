@@ -1,6 +1,6 @@
 # Naskah submission · PROOF2PAY AI
 
-**Status:** siap sebagai draf pengisian formulir, belum dikirim ke penyelenggara. Pemilik proyek mengonfirmasi bahwa peserta bekerja **sendiri**, tanpa tim. Nama peserta di bawah diambil dari identitas Git lokal dan harus dicocokkan dengan nama pada pendaftaran. Sertifikat/bukti persyaratan administrasi harus dilampirkan dari berkas asli.
+**Status:** siap sebagai draf pengisian formulir, belum dikirim ke penyelenggara. Pemilik proyek mengonfirmasi bahwa peserta bekerja **sendiri**, tanpa tim. Nama peserta di bawah diambil dari identitas Git lokal dan harus dicocokkan dengan nama pada pendaftaran. [Jawaban per kolom formulir resmi](FORM_JAWABAN.md) tersedia untuk disalin. Formulir meminta sertifikat kelulusan kursus IBM SkillsBuild University Education yang asli; Certificate of Participation Hackathon diperoleh setelah submission menurut pesan panitia kepada peserta.
 
 | Kolom | Isi |
 |---|---|
@@ -75,7 +75,7 @@ Klaim teknisi tidak otomatis menjadi bukti. Persyaratan kritis yang hilang tetap
 1. Cocokkan nama Adhitya Afif Ardana di tabel atas dengan nama pada pendaftaran; perbaiki bila berbeda.
 2. Buka [repository publik](https://github.com/apiipp-co/proof2pay-ai) dan pastikan tautan dokumen, video, serta ekspor Langflow dapat diakses. Lihat [catatan publikasi](GITHUB_UPLOAD.md).
 3. Bila form meminta URL video, gunakan tautan GitHub pada tabel setelah mengecek bahwa video dapat diputar tanpa login.
-4. Periksa formulir dan email penyelenggara untuk jam tutup yang berlaku. [Halaman program resmi](https://hacktiv8.com/projects/ibm/hackathon) menyebut Stage 1 berlangsung sampai 4 Oktober 2026 dan bahwa sertifikat/materi Hackathon Class diperlukan untuk melengkapi submission. Lampirkan hanya bukti asli.
-5. Jika integrasi Bob merupakan syarat penilaian, jalankan pengujian Bob sungguhan dan tambahkan bukti panggilan tool. Jangan menggunakan laporan MCP langsung sebagai pengganti bukti Bob.
+4. Isi [formulir resmi](https://bit.ly/submit-hackathon) dengan identitas dan sertifikat **kelulusan kursus IBM SkillsBuild University Education** yang asli. Formulir juga mewajibkan unggahan pitch deck dan screenshot. Periksa unggahan yang mungkin tersimpan dalam draf. [Halaman program resmi](https://hacktiv8.com/projects/ibm/hackathon) menyebut Stage 1 sampai 4 Oktober 2026; periksa jam tutup di form/email panitia.
+5. Pesan panitia kepada peserta menyatakan project boleh disubmit sebelum integrasi Bob–Langflow selesai, tetapi integrasi wajib dikembangkan bila lolos final untuk mentoring KOMDIGI. Jelaskan status Bob dengan jujur sesuai [jawaban formulir](FORM_JAWABAN.md); jangan menggunakan laporan MCP langsung sebagai bukti panggilan Bob.
 
 Dokumen ini adalah naskah siap salin yang jujur terhadap implementasi tanggal 2 Oktober 2026; penerimaan akhir ditentukan penyelenggara.
