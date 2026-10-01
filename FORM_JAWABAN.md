@@ -77,7 +77,7 @@ Hubungan teknisnya memakai MCP: Langflow mengekspor empat flow sebagai tool pada
 
 https://github.com/apiipp-co/proof2pay-ai
 
-Repository publik berisi README, kode prototipe, flow Langflow, dokumentasi, diagram, pitch deck, video, screenshot, dan laporan uji. Demo interaktif: https://apiipp-co.github.io/proof2pay-ai/app/
+Repository publik berisi README, kode prototipe, flow Langflow, dokumentasi, diagram, pitch deck, video, screenshot, dan laporan uji. Demo interaktif: <https://apiipp-co.github.io/proof2pay-ai/app/>. Video demo final (76 detik): <https://apiipp-co.github.io/proof2pay-ai/demo/proof2pay-demo-stage1-final.mp4>.
 
 ### Pitching Deck
 

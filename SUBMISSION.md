@@ -11,7 +11,7 @@
 | Tagline | Finish the job. Prove the job. Get paid. |
 | Repository | [github.com/apiipp-co/proof2pay-ai](https://github.com/apiipp-co/proof2pay-ai) |
 | Demo interaktif | [apiipp-co.github.io/proof2pay-ai/app/](https://apiipp-co.github.io/proof2pay-ai/app/) (simulasi statis, tanpa login) |
-| Video demo | [Tonton video 76 detik](https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo-stage1-final.mp4) (rekaman browser diikuti dua cuplikan hasil terkini; tanpa narasi) |
+| Video demo | [Tonton video 76 detik](https://apiipp-co.github.io/proof2pay-ai/demo/proof2pay-demo-stage1-final.mp4) (rekaman browser diikuti dua cuplikan hasil terkini; tanpa narasi) |
 | Demo lokal | `python3 -m http.server 8000`, lalu `http://localhost:8000/app/` |
 
 ## Tautan siap tempel ke formulir
@@ -20,7 +20,7 @@
 |---|---|
 | Repository | https://github.com/apiipp-co/proof2pay-ai |
 | MVP interaktif | https://apiipp-co.github.io/proof2pay-ai/app/ |
-| Video demo | https://github.com/apiipp-co/proof2pay-ai/blob/main/demo/proof2pay-demo-stage1-final.mp4 |
+| Video demo | https://apiipp-co.github.io/proof2pay-ai/demo/proof2pay-demo-stage1-final.mp4 |
 | Pitch deck PDF | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/02-pitch-deck-stage1-final.pdf |
 | Pitch deck PPTX | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/02-pitch-deck-stage1-final.pptx |
 | Dokumentasi teknis | https://github.com/apiipp-co/proof2pay-ai/blob/main/docs/03-technical-documentation.pdf |
