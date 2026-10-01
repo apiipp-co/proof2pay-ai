@@ -23,7 +23,7 @@ This is the source of truth for what has actually run. `DONE` means a local arti
 | Hosted Langflow backend | NOT DEPLOYED | Langflow and Ollama run only on the prepared local Mac |
 | Demo video | DONE | `demo/proof2pay-demo.mp4`; silent screen recording of browser demo and Langflow UI |
 | Primary user interviews or measured commercial impact | NOT DONE | Published local cases strengthen secondary evidence, but PROOF2PAY has no consented interviews, pilot, or measured business result |
-| Organizer form submission | NOT DONE | Needs participant name, final links, required certificate/eligibility evidence, and human submission |
+| Organizer form submission | NOT DONE | Final links are prepared; participant name needs comparison with registration, and authentic certificate/eligibility evidence plus human submission are still required |
 
 ## Reproduce the checks
 

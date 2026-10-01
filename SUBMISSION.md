@@ -1,11 +1,11 @@
 # Naskah submission · PROOF2PAY AI
 
-**Status:** siap sebagai draf pengisian formulir, belum dikirim ke penyelenggara. Pemilik proyek mengonfirmasi bahwa peserta bekerja **sendiri**, tanpa tim. Nama lengkap peserta dan bukti persyaratan administrasi harus diisi dari data asli sebelum submit.
+**Status:** siap sebagai draf pengisian formulir, belum dikirim ke penyelenggara. Pemilik proyek mengonfirmasi bahwa peserta bekerja **sendiri**, tanpa tim. Nama peserta di bawah diambil dari identitas Git lokal dan harus dicocokkan dengan nama pada pendaftaran. Sertifikat/bukti persyaratan administrasi harus dilampirkan dari berkas asli.
 
 | Kolom | Isi |
 |---|---|
 | Nama proyek | PROOF2PAY AI |
-| Nama peserta | **[Isi nama lengkap sesuai pendaftaran]** |
+| Nama peserta | Adhitya Afif Ardana **(cocokkan dengan data pendaftaran)** |
 | Tim | Peserta individu / solo |
 | Tema | Productivity & Smart Business |
 | Tagline | Finish the job. Prove the job. Get paid. |
@@ -72,7 +72,7 @@ Klaim teknisi tidak otomatis menjadi bukti. Persyaratan kritis yang hilang tetap
 
 ## Sebelum menekan Submit
 
-1. Isi nama lengkap peserta di tabel atas sesuai pendaftaran.
+1. Cocokkan nama Adhitya Afif Ardana di tabel atas dengan nama pada pendaftaran; perbaiki bila berbeda.
 2. Buka [repository publik](https://github.com/apiipp-co/proof2pay-ai) dan pastikan tautan dokumen, video, serta ekspor Langflow dapat diakses. Lihat [catatan publikasi](GITHUB_UPLOAD.md).
 3. Bila form meminta URL video, gunakan tautan GitHub pada tabel setelah mengecek bahwa video dapat diputar tanpa login.
 4. Periksa formulir dan email penyelenggara untuk jam tutup yang berlaku. [Halaman program resmi](https://hacktiv8.com/projects/ibm/hackathon) menyebut Stage 1 berlangsung sampai 4 Oktober 2026 dan bahwa sertifikat/materi Hackathon Class diperlukan untuk melengkapi submission. Lampirkan hanya bukti asli.
